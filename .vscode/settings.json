@@ -3,5 +3,6 @@
         "*.embeddedhtml": "html",
         "*.html": "html",
         "fstream": "cpp"
-    }
+    },
+    "cmake.sourceDirectory": "/home/hamzaihsan/projects/sfml/imgui-engine-base/imgui/examples/example_android_opengl3"
 }

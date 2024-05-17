@@ -4,11 +4,15 @@
 #include "object.h"
 #include <iostream>
 #include "json.hpp"
+#include "./scripts/playerScript.h"
+#include "Game.h"
+#include "./scripts/manageScript.h"
 using namespace std;
 
 std::vector<Object> readDataFromFile(const std::string &filename)
 {
     std::vector<Object> objects;
+
     std::ifstream file(filename);
     nlohmann::json j;
     file >> j;
@@ -27,20 +31,41 @@ std::vector<Object> readDataFromFile(const std::string &filename)
         sf::Vector2f size(objJson["width"], objJson["height"]); // Convert values to sf::Vector2f
         obj.setSize(size);
         obj.setFillColor(sf::Color(objJson["color"]));
+        obj.isEnemy = objJson["isEnemy"];
+        obj.isWall = objJson["isWall"];
+        obj.isItem = objJson["isItem"];
         objects.push_back(obj);
     }
 
     return objects;
 }
 
+
+
+PlayerCl readPlayerJson(const std::string &filename)
+{
+    std::ifstream file(filename);
+    nlohmann::json j;
+    file >> j;
+    PlayerCl player;
+    player.id = j["id"];
+    player.setPosition(j["x"], j["y"]);
+    player.setRadius(j["radius"]);
+    player.setFillColor(sf::Color(j["color"]));
+    return player;
+}
+
 int main()
 {
     // Create the SFML window
+    Game game;
     sf::RenderWindow window(sf::VideoMode(800, 600), "SFML Tile Map");
-
-    vector<Object> everything_map;
-    everything_map =  readDataFromFile("everything.json");
-
+    PlayerCl Player;
+    game.everything_map;
+    game.everything_map =  readDataFromFile("everything.json");
+    Player = readPlayerJson("player.json");
+    game.Start();
+    Player.Start();
     // Main game loop
     while (window.isOpen())
     {
@@ -52,7 +77,7 @@ int main()
             {
                 window.close();
             }
-           
+           Player.Update();
             
         }
 
@@ -60,11 +85,11 @@ int main()
         window.clear();
 
         // Render the tile map
-        for (const auto &obj : everything_map)
+        for (const auto &obj : game.everything_map)
         {
            window.draw(obj);
         }
-
+        window.draw(Player);
         // Display the window
         window.display();
     }
