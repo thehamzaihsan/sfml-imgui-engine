@@ -1,0 +1,8 @@
+/home/hamzaihsan/projects/sfml/imgui-engine-base/imgui-sfml/build/CMakeFiles/ImGui-SFML.dir
+/home/hamzaihsan/projects/sfml/imgui-engine-base/imgui-sfml/build/CMakeFiles/tidy.dir
+/home/hamzaihsan/projects/sfml/imgui-engine-base/imgui-sfml/build/CMakeFiles/edit_cache.dir
+/home/hamzaihsan/projects/sfml/imgui-engine-base/imgui-sfml/build/CMakeFiles/rebuild_cache.dir
+/home/hamzaihsan/projects/sfml/imgui-engine-base/imgui-sfml/build/CMakeFiles/list_install_components.dir
+/home/hamzaihsan/projects/sfml/imgui-engine-base/imgui-sfml/build/CMakeFiles/install.dir
+/home/hamzaihsan/projects/sfml/imgui-engine-base/imgui-sfml/build/CMakeFiles/install/local.dir
+/home/hamzaihsan/projects/sfml/imgui-engine-base/imgui-sfml/build/CMakeFiles/install/strip.dir
