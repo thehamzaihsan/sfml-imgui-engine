@@ -11,23 +11,8 @@ using namespace std;
 
 void PlayerCl::Start(){
     this->setFillColor(sf::Color::Magenta);
-    
+    this->setRadius(20); 
 }
-
-// sf::Texture setTexture(int i)
-// {
-//     switch (i)
-//     {
-//     case 1:
-//         sf::Texture T;
-//         break;
-    
-
-
-//     default:
-//         break;
-//     }
-// }
 
 
 void PlayerCl::Update(){
