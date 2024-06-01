@@ -9,6 +9,10 @@
 #include "./scripts/manageScript.h"
 using namespace std;
 
+
+
+
+
 std::vector<Object> readDataFromFile(const std::string &filename)
 {
     std::vector<Object> objects;
@@ -40,8 +44,6 @@ std::vector<Object> readDataFromFile(const std::string &filename)
     return objects;
 }
 
-
-
 PlayerCl readPlayerJson(const std::string &filename)
 {
     std::ifstream file(filename);
@@ -62,7 +64,7 @@ int main()
     sf::RenderWindow window(sf::VideoMode(800, 600), "SFML Tile Map");
     PlayerCl Player;
     game.everything_map;
-    game.everything_map =  readDataFromFile("everything.json");
+    game.everything_map = readDataFromFile("everything.json");
     Player = readPlayerJson("player.json");
     game.Start();
     Player.Start();
@@ -77,8 +79,7 @@ int main()
             {
                 window.close();
             }
-           Player.Update();
-            
+            Player.Update();
         }
 
         // Clear the window
@@ -87,7 +88,7 @@ int main()
         // Render the tile map
         for (const auto &obj : game.everything_map)
         {
-           window.draw(obj);
+            window.draw(obj);
         }
         window.draw(Player);
         // Display the window

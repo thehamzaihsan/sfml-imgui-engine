@@ -17,6 +17,15 @@ using namespace std;
 using namespace sf;
 using namespace ImGui;
 
+// a function that returns a long long int of random value it should keep time as a seed
+long long int randomValue()
+{
+    // change so this ID is 16 digit long and includes a letters and numbers
+    srand(time(0));
+    long long int id = rand() % 10000000000000000;
+    return id;
+}
+
 void writeDataToFile(const std::vector<Object> &objects, const std::string &filename)
 {
     nlohmann::json j;
@@ -106,22 +115,67 @@ int main()
     Player.setPosition(100, 100);
     Player.setOutlineColor(Color::White);
     Player.setOutlineThickness(0);
-    
+    bool unsaved = true;
+    ImGuiWindowFlags allwins = ImGuiWindowFlags_NoMove | ImGuiWindowFlags_NoResize;
+    ImGuiWindowFlags controlWins = ImGuiWindowFlags_NoMove | ImGuiWindowFlags_NoResize;
+    if (unsaved)
+    {
+        controlWins = ImGuiWindowFlags_NoMove | ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoCollapse | ImGuiWindowFlags_UnsavedDocument;
+    }
     if (readDataFromFile("everything.json").size() != 0)
     {
         game.everything_map = readDataFromFile("everything.json");
     }
-    game.Start();
-    int curr_id = game.everything_map.size();
-    int Selected_Object_id = 1;
-    if (!SFML::Init(window))
+
+    ImGui::SFML::Init(window);
+
+    std::cout << "ImGui-SFML initialized\n";
+
+    // Create ImGui context
+    ImGui::CreateContext();
+    ImGuiIO &io = ImGui::GetIO();
+    ImFont *font = io.Fonts->AddFontFromFileTTF("Geist-Regular.ttf", 23.0f, NULL, io.Fonts->GetGlyphRangesDefault());
+    ImGui::SFML::UpdateFontTexture();
+
+    if (font == NULL)
     {
-        std::cout << "SFML::Init failed\n";
+        std::cout << "Failed to load font\n";
         return 1;
     }
+    else if (!font->IsLoaded())
+    {
+        std::cout << "Font is not loaded\n";
+        return 1;
+    }
+
+    std::cout << "Font loaded successfully\n";
+    game.Start();
+    int Selected_Object_id = 0;
+    // Update font texture
+    // if (font == NULL)
+    // {
+    //     std::cout << "Failed to load font\n";
+    //     return 1;
+    // }
+    // else if (!font->IsLoaded())
+    // {
+    //     std::cout << "Font is not loaded\n";
+    //     return 1;
+    // }
+
+    if (unsaved)
+    {
+        controlWins = ImGuiWindowFlags_NoMove | ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoCollapse | ImGuiWindowFlags_UnsavedDocument;
+    }
+    else
+    {
+        controlWins = ImGuiWindowFlags_NoMove | ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoCollapse;
+    }
+
     sf::CircleShape shape(100.f);
     shape.setFillColor(sf::Color::Green);
     Player.Start();
+
     sf::Clock deltaClock;
     while (window.isOpen())
     {
@@ -153,12 +207,16 @@ int main()
             }
         }
 
-
         // IMGUI
         SFML::Update(window, deltaClock.restart());
-        ShowDemoWindow();
         SetNextWindowPos(ImVec2(1500, 34), ImGuiCond_FirstUseEver);
-        Begin("Properties");
+        PushFont(font);
+        ShowDemoWindow();
+        bool t = true;
+        Begin("Properties", &t, allwins);
+
+        // ImGui::ColorEdit3("MyColor##1", (float*)&color, misc_flags);
+
         if (Button("Color Change"))
         {
             for (auto &objects : game.everything_map)
@@ -168,6 +226,7 @@ int main()
                 {
                     cout << Selected_Object_id;
                     objects.setFillColor(sf::Color::Yellow);
+                    *&unsaved = true;
                 }
             }
         }
@@ -179,7 +238,7 @@ int main()
                 Checkbox("isCollidable", &objects.isWall);
             }
         }
-           for (auto &objects : game.everything_map)
+        for (auto &objects : game.everything_map)
         {
 
             if (Selected_Object_id == objects.id)
@@ -188,58 +247,71 @@ int main()
             }
         }
         End();
-        
-        Begin("Everything Map");
+
+        Begin("Everything Map", &t, allwins);
+        BeginGroup();
+        if (ImGui::Button("Delete"))
+        {
+            game.everything_map.erase(game.everything_map.begin() + Selected_Object_id);
+        }
+        SameLine();
+        if (Button("Add Shape/Block"))
+        {
+            Object obj;
+            obj.id = randomValue();
+            Selected_Object_id = obj.id;
+            obj.setPosition(100, 100);
+            obj.setSize(sf::Vector2f(100, 100));
+            game.everything_map.push_back({obj});
+        }
+        EndGroup();
         for (int i = 0; i < game.everything_map.size(); i++)
         {
             std::string string_id = std::to_string(game.everything_map[i].id);
             ImGui::BeginGroup();
-        
+
             std::string button_label = "Shape" + string_id;
             if (ImGui::Button(button_label.c_str()))
             {
                 Selected_Object_id = game.everything_map[i].id;
             }
 
-            if(ImGui::Button("Delete"))
-            {
-                game.everything_map.erase(game.everything_map.begin() + i);
-            }
             ImGui::EndGroup();
         }
         if (ImGui::Button("Player"))
         {
             Selected_Object_id = -1;
         }
-        if (Button("Add Shape/Block"))
-        {
-            Object obj;
-            obj.id = curr_id++;
-            Selected_Object_id = obj.id;
-            obj.setPosition(100, 100);
-            obj.setSize(sf::Vector2f(100, 100));
-            game.everything_map.push_back({obj});
-        }
+
         End();
 
         SetNextWindowPos(ImVec2(1500, 10), ImGuiCond_FirstUseEver);
-        Begin("Controls");
-        if (Button("Save & Play"))
+        Begin("Controls", &t, controlWins);
+        BeginGroup();
         {
-            SavePlayerData(Player, "player.json");
-            writeDataToFile(game.everything_map, "everything.json");
-            system("g++ -c game.cpp && g++ game.o -o sfml-app -lsfml-graphics -lsfml-window -lsfml-system && ./sfml-app");
+            if (Button("Save & Play"))
+            {
+                SavePlayerData(Player, "player.json");
+                unsaved = false;
+                writeDataToFile(game.everything_map, "everything.json");
+                system("g++ -c game.cpp && g++ game.o -o sfml-app -lsfml-graphics -lsfml-window -lsfml-system && ./sfml-app");
+            }
+            SameLine();
+            if (Button("Play"))
+            {
+                system("g++ -c game.cpp && g++ game.o -o sfml-app -lsfml-graphics -lsfml-window -lsfml-system && ./sfml-app");
+            }
+            SameLine();
+            if (Button("Save"))
+            {
+                SavePlayerData(Player, "player.json");
+                unsaved = false;
+                writeDataToFile(game.everything_map, "everything.json");
+            }
         }
-        if (Button("Play"))
-        {
-            system("g++ -c game.cpp && g++ game.o -o sfml-app -lsfml-graphics -lsfml-window -lsfml-system && ./sfml-app");
-        }
-        if (Button("Save"))
-        {
-            SavePlayerData(Player, "player.json");
-            writeDataToFile(game.everything_map, "everything.json");
-        }
+        EndGroup();
         End();
+        PopFont();
         // RENDER HERE
         window.clear();
         for (const auto &objects : game.everything_map)
