@@ -295,6 +295,7 @@ int main()
             {
                 Selected_Object_id = game.everything_map[i].id;
             }
+            
         }
         ImGui::EndGroup();
 
