@@ -17,15 +17,18 @@ using namespace std;
 using namespace sf;
 using namespace ImGui;
 
-// a function that returns a long long int of random value it should keep time as a seed
+// Function that returns a random long long int value
+#include <random>
+
 long long int randomValue()
 {
-    // change so this ID is 16 digit long and includes a letters and numbers
-    srand(time(0));
-    long long int id = rand() % 10000000000000000;
-    return id;
+    static std::random_device rd;
+    static std::mt19937 gen(rd());
+    std::uniform_int_distribution<long long int> dis(0, 9999999999999999);
+    return dis(gen);
 }
 
+// Function to write object data to a file in JSON format
 void writeDataToFile(const std::vector<Object> &objects, const std::string &filename)
 {
     nlohmann::json j;
@@ -38,7 +41,6 @@ void writeDataToFile(const std::vector<Object> &objects, const std::string &file
         objJson["width"] = obj.getSize().x;
         objJson["height"] = obj.getSize().y;
         objJson["color"] = obj.getFillColor().toInteger();
-        // add booleans
         objJson["isWall"] = obj.isWall;
         objJson["isEnemy"] = obj.isEnemy;
         objJson["isItem"] = obj.isItem;
@@ -48,6 +50,8 @@ void writeDataToFile(const std::vector<Object> &objects, const std::string &file
     std::ofstream file(filename);
     file << j;
 }
+
+// Function to read object data from a file in JSON format
 std::vector<Object> readDataFromFile(const std::string &filename)
 {
     std::vector<Object> objects;
@@ -66,7 +70,7 @@ std::vector<Object> readDataFromFile(const std::string &filename)
         Object obj;
         obj.id = objJson["id"];
         obj.setPosition(objJson["x"], objJson["y"]);
-        sf::Vector2f size(objJson["width"], objJson["height"]); // Convert values to sf::Vector2f
+        sf::Vector2f size(objJson["width"], objJson["height"]);
         obj.setSize(size);
         obj.setFillColor(sf::Color(objJson["color"]));
         obj.isEnemy = objJson["isEnemy"];
@@ -78,6 +82,7 @@ std::vector<Object> readDataFromFile(const std::string &filename)
     return objects;
 }
 
+// Function to save player data to a file in JSON format
 void SavePlayerData(const PlayerCl &player, const std::string &filename)
 {
     nlohmann::json j;
@@ -90,6 +95,7 @@ void SavePlayerData(const PlayerCl &player, const std::string &filename)
     file << j;
 }
 
+// Function to read player data from a file in JSON format
 PlayerCl readPlayerJson(const std::string &filename)
 {
     std::ifstream file(filename);
@@ -102,42 +108,11 @@ PlayerCl readPlayerJson(const std::string &filename)
     player.setFillColor(sf::Color(j["color"]));
     return player;
 }
-
-void dragObject(std::vector<Object>& objects, int selectedId, const sf::RenderWindow& window) {
-    static bool isDragging = false;
-    static sf::Vector2f offset;
-
-    sf::Vector2i mousePosition = sf::Mouse::getPosition(window);
-
-    for (auto &obj : objects)
-    {
-        if (obj.id == selectedId)
-        {
-            if (sf::Mouse::isButtonPressed(sf::Mouse::Right))
-            {
-                if (!isDragging)
-                {
-                    // Calculate the offset at the start of dragging
-                    offset = obj.getPosition() - window.mapPixelToCoords(mousePosition);
-                    isDragging = true;
-                }
-                // Update the position of the object
-                obj.setPosition(window.mapPixelToCoords(mousePosition) + offset);
-            }
-            else
-            {
-                isDragging = false;
-            }
-            break;
-        }
-    }
-}
-
 int main()
 {
-
     // Start
     Game game;
+    std::cout << "ImGui version: " << IMGUI_VERSION << std::endl;
     sf::RenderWindow window(sf::VideoMode(1920, 1080), "Game Engine");
     window.setFramerateLimit(60);
     PlayerCl Player;
@@ -149,17 +124,18 @@ int main()
     bool unsaved = true;
     ImGuiWindowFlags allwins = ImGuiWindowFlags_NoMove | ImGuiWindowFlags_NoResize;
     ImGuiWindowFlags controlWins = ImGuiWindowFlags_NoMove | ImGuiWindowFlags_NoResize;
+
     if (unsaved)
     {
         controlWins = ImGuiWindowFlags_NoMove | ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoCollapse | ImGuiWindowFlags_UnsavedDocument;
     }
+
     if (readDataFromFile("everything.json").size() != 0)
     {
         game.everything_map = readDataFromFile("everything.json");
     }
 
     ImGui::SFML::Init(window);
-
     std::cout << "ImGui-SFML initialized\n";
 
     // Create ImGui context
@@ -168,40 +144,15 @@ int main()
     ImFont *font = io.Fonts->AddFontFromFileTTF("Geist-Regular.ttf", 23.0f, NULL, io.Fonts->GetGlyphRangesDefault());
     ImGui::SFML::UpdateFontTexture();
 
-    if (font == NULL)
+    if (font == NULL || !font->IsLoaded())
     {
         std::cout << "Failed to load font\n";
-        return 1;
-    }
-    else if (!font->IsLoaded())
-    {
-        std::cout << "Font is not loaded\n";
         return 1;
     }
 
     std::cout << "Font loaded successfully\n";
     game.Start();
     int Selected_Object_id = 0;
-    // Update font texture
-    // if (font == NULL)
-    // {
-    //     std::cout << "Failed to load font\n";
-    //     return 1;
-    // }
-    // else if (!font->IsLoaded())
-    // {
-    //     std::cout << "Font is not loaded\n";
-    //     return 1;
-    // }
-
-    if (unsaved)
-    {
-        controlWins = ImGuiWindowFlags_NoMove | ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoCollapse | ImGuiWindowFlags_UnsavedDocument;
-    }
-    else
-    {
-        controlWins = ImGuiWindowFlags_NoMove | ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoCollapse;
-    }
 
     sf::CircleShape shape(100.f);
     shape.setFillColor(sf::Color::Green);
@@ -220,21 +171,12 @@ int main()
                 window.close();
             }
         }
-
-        for (auto &objects : game.everything_map)
-        {
-            if (objects.getGlobalBounds().contains(window.mapPixelToCoords(sf::Mouse::getPosition(window))) && event.type == sf::Event::MouseButtonPressed)
-            {
-                Selected_Object_id = objects.id;
-            }
-        }
-
-        dragObject(game.everything_map, Selected_Object_id, window);
-
         if (Selected_Object_id == -1)
         {
             Player.update();
         }
+        game.DragnDrop();
+
         for (auto &objects : game.everything_map)
         {
             if (objects.id == Selected_Object_id)
@@ -256,47 +198,75 @@ int main()
         ShowDemoWindow();
         bool t = true;
         Begin("Properties", &t, allwins);
-
-        // ImGui::ColorEdit3("MyColor##1", (float*)&color, misc_flags);
-
-        if (Button("Color Change"))
+        if (TreeNode("Object Color")) // Replace BeginTabItem with TreeNode
         {
             for (auto &objects : game.everything_map)
             {
-
-                if (Selected_Object_id == objects.id)
+                if (objects.id == Selected_Object_id)
                 {
-                    cout << Selected_Object_id;
-                    objects.setFillColor(sf::Color::Yellow);
-                    *&unsaved = true;
+
+                    ImVec4 color = ImVec4(objects.getFillColor().r / 255.0f, objects.getFillColor().g / 255.0f, objects.getFillColor().b / 255.0f, objects.getFillColor().a / 255.0f);
+                    if (ColorPicker4("Object Color", &color.x, ImGuiColorEditFlags_NoInputs | ImGuiColorEditFlags_NoLabel))
+                    {
+                        objects.setFillColor(sf::Color(color.x * 255, color.y * 255, color.z * 255, color.w * 255));
+                        unsaved = true;
+                    }
                 }
             }
+            TreePop(); // Replace EndTabItem with TreePop
         }
+
         for (auto &objects : game.everything_map)
         {
-
-            if (Selected_Object_id == objects.id)
-            {
-                Checkbox("isCollidable", &objects.isWall);
-            }
-        }
-        for (auto &objects : game.everything_map)
-        {
-
             if (Selected_Object_id == objects.id)
             {
                 Checkbox("isItem", &objects.isItem);
             }
+
+            if (Selected_Object_id == objects.id)
+            {
+                if (TreeNode("Object Position")) // Check if TreeNode returns true
+                {
+                    float posX = objects.getPosition().x;
+                    float posY = objects.getPosition().y;
+                    ImGui::InputFloat("X", &posX, 0.1f);
+                    ImGui::InputFloat("Y", &posY, 0.1f);
+                    objects.setPosition(posX, posY);
+
+                    TreePop(); // Only call TreePop if TreeNode returned true
+                }
+            }
+            if(Selected_Object_id == objects.id)
+            {
+                if (TreeNode("Object Size")) // Check if TreeNode returns true
+                {
+                    float width = objects.getSize().x;
+                    float height = objects.getSize().y;
+                    ImGui::InputFloat("Width", &width, 0.001f);
+                    ImGui::InputFloat("Height", &height, 0.001f);
+                    objects.setSize(sf::Vector2f(width, height));
+
+                    TreePop(); // Only call TreePop if TreeNode returned true
+                }
+            }
         }
+
         End();
 
         Begin("Everything Map", &t, allwins);
         BeginGroup();
+
         if (ImGui::Button("Delete"))
         {
-            game.everything_map.erase(game.everything_map.begin() + Selected_Object_id);
+            if (Selected_Object_id != -1)
+            {
+                cout << ("Deleted Object with id: " + std::to_string(Selected_Object_id));
+                game.everything_map.erase(game.everything_map.begin() + Selected_Object_id);
+            }
         }
+
         SameLine();
+
         if (Button("Add Shape/Block"))
         {
             Object obj;
@@ -306,24 +276,24 @@ int main()
             obj.setSize(sf::Vector2f(100, 100));
             game.everything_map.push_back({obj});
         }
+
         EndGroup();
-        for (int i = 0; i < game.everything_map.size(); i++)
-        {
-            std::string string_id = std::to_string(game.everything_map[i].id);
-            ImGui::BeginGroup();
 
-            std::string button_label = "Shape" + string_id;
-            if (ImGui::Button(button_label.c_str()))
-            {
-                Selected_Object_id = game.everything_map[i].id;
-            }
-
-            ImGui::EndGroup();
-        }
-        if (ImGui::Button("Player"))
+        ImGui::BeginGroup();
+        if (ImGui::Selectable("Player", Selected_Object_id == -1))
         {
             Selected_Object_id = -1;
         }
+        for (int i = 0; i < game.everything_map.size(); i++)
+        {
+            std::string string_id = std::to_string(game.everything_map[i].id);
+            std::string button_label = "Shape-" + string_id;
+            if (ImGui::Selectable(button_label.c_str(), Selected_Object_id == game.everything_map[i].id))
+            {
+                Selected_Object_id = game.everything_map[i].id;
+            }
+        }
+        ImGui::EndGroup();
 
         End();
 
@@ -338,12 +308,16 @@ int main()
                 writeDataToFile(game.everything_map, "everything.json");
                 system("g++ -c game.cpp && g++ game.o -o sfml-app -lsfml-graphics -lsfml-window -lsfml-system && ./sfml-app");
             }
+
             SameLine();
+
             if (Button("Play"))
             {
                 system("g++ -c game.cpp && g++ game.o -o sfml-app -lsfml-graphics -lsfml-window -lsfml-system && ./sfml-app");
             }
+
             SameLine();
+
             if (Button("Save"))
             {
                 SavePlayerData(Player, "player.json");
@@ -354,6 +328,7 @@ int main()
         EndGroup();
         End();
         PopFont();
+
         // RENDER HERE
         window.clear();
         for (const auto &objects : game.everything_map)
@@ -367,5 +342,3 @@ int main()
 
     SFML::Shutdown();
 }
-
-// TodoList

@@ -9,9 +9,15 @@ using namespace std;
 #include <fstream>
 #include "object.h"
 
-class Game{
-    public:
+class Game
+{
+public:
     vector<Object> everything_map;
+    bool isTileMap = true;
+    void DragnDrop(){
+        everything_map[0].setFillColor(sf::Color::Yellow);
+        cout << "DragnDrop\n";
+    }
     void Update();
     void Start();
 };
