@@ -1,7 +1,0 @@
-# CMake generation dependency list for this directory.
-C:/Program Files/CMake/share/cmake-3.29/Modules/FindOpenGL.cmake
-C:/Program Files/CMake/share/cmake-3.29/Modules/FindPackageHandleStandardArgs.cmake
-C:/Program Files/CMake/share/cmake-3.29/Modules/FindPackageMessage.cmake
-C:/Program Files/CMake/share/cmake-3.29/Modules/GNUInstallDirs.cmake
-D:/Projects/sfml-imgui-engine/build/_deps/imgui-sfml-src/CMakeLists.txt
-D:/Projects/sfml-imgui-engine/build/_deps/imgui-sfml-src/cmake/FindImGui.cmake

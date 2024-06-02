@@ -16,6 +16,7 @@ public:
     bool isTileMap = true;
     void dragObject(std::vector<Object> &objects, int selectedId, const sf::RenderWindow &window)
     {
+        cout << "fasdfasf";
         static bool isDragging = false;
         static sf::Vector2f offset;
 

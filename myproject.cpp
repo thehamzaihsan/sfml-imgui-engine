@@ -130,10 +130,16 @@ int main()
         controlWins = ImGuiWindowFlags_NoMove | ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoCollapse | ImGuiWindowFlags_UnsavedDocument;
     }
 
-    if (readDataFromFile("everything.json").size() != 0)
+    std::ifstream file("everything.json");
+    if (file.peek() == std::ifstream::traits_type::eof())
     {
+        // The file is empty
+        std::cerr << "File is empty" << std::endl;
+    }
+    else
+    {
+        // The file is not empty, parse it
         game.everything_map = readDataFromFile("everything.json");
-        cout << game.everything_map.size() << endl;
     }
 
     ImGui::SFML::Init(window);
@@ -142,7 +148,7 @@ int main()
     // Create ImGui context
     ImGui::CreateContext();
     ImGuiIO &io = ImGui::GetIO();
-    ImFont *font = io.Fonts->AddFontFromFileTTF("Geist-Regular.ttf", 23.0f, NULL, io.Fonts->GetGlyphRangesDefault());
+    ImFont *font = io.Fonts->AddFontFromFileTTF("Rubik-Regular.ttf", 23.0f, NULL, io.Fonts->GetGlyphRangesDefault());
     ImGui::SFML::UpdateFontTexture();
 
     if (font == NULL || !font->IsLoaded())
@@ -270,14 +276,14 @@ int main()
         {
             if (Selected_Object_id != -1)
             {
-                cout << ("Deleted Object with id: " + std::to_string(Selected_Object_id));
+                cout << ("Deleted Object with id: " + std::to_string(Selected_Object_id)) << endl;
                 game.everything_map.erase(game.everything_map.begin() + Selected_Object_id);
             }
         }
 
         SameLine();
 
-        if (Button("Add Shape/Block"))
+        if (Button("Add Shape/Blocks"))
         {
             Object obj;
             obj.id = randomValue();
@@ -302,7 +308,6 @@ int main()
             {
                 Selected_Object_id = game.everything_map[i].id;
             }
-            
         }
         ImGui::EndGroup();
 
