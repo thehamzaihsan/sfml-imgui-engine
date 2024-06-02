@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <CustomBuild Include="D:\Projects\sfml-imgui-engine\build\CMakeFiles\df6e82a0a38cf241a6bb552717fc0436\PACKAGE_force.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="CMake Rules">
+      <UniqueIdentifier>{F3CDB8F4-9481-3CF0-901D-8B3D3654D03E}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

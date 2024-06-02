@@ -1,0 +1,10 @@
+^D:\PROJECTS\SFML-IMGUI-ENGINE\BUILD\CMAKEFILES\DF6E82A0A38CF241A6BB552717FC0436\GENERATE.STAMP.RULE
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SD:/Projects/sfml-imgui-engine -BD:/Projects/sfml-imgui-engine/build --check-stamp-list CMakeFiles/generate.stamp.list --vs-solution-file D:/Projects/sfml-imgui-engine/build/CMakeSFMLProject.sln
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd

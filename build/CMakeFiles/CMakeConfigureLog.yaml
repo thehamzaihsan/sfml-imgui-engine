@@ -1,0 +1,554 @@
+
+---
+events:
+  -
+    kind: "message-v1"
+    backtrace:
+      - "C:/Program Files/CMake/share/cmake-3.29/Modules/CMakeDetermineSystem.cmake:205 (message)"
+      - "CMakeLists.txt:2 (project)"
+    message: |
+      The system is: Windows - 10.0.19045 - AMD64
+  -
+    kind: "message-v1"
+    backtrace:
+      - "C:/Program Files/CMake/share/cmake-3.29/Modules/CMakeDetermineCompilerId.cmake:17 (message)"
+      - "C:/Program Files/CMake/share/cmake-3.29/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "C:/Program Files/CMake/share/cmake-3.29/Modules/CMakeDetermineCXXCompiler.cmake:126 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:2 (project)"
+    message: |
+      Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" succeeded.
+      Compiler:  
+      Build flags: 
+      Id flags:  
+      
+      The output was:
+      0
+      MSBuild version 17.7.2+d6990bcfa for .NET Framework
+      Build started 02/06/2024 12:20:29 pm.
+      
+      Project "D:\\Projects\\sfml-imgui-engine\\build\\CMakeFiles\\3.29.3\\CompilerIdCXX\\CompilerIdCXX.vcxproj" on node 1 (default targets).
+      PrepareForBuild:
+        Creating directory "Debug\\".
+        Creating directory "Debug\\CompilerIdCXX.tlog\\".
+      InitializeBuildStatus:
+        Creating "Debug\\CompilerIdCXX.tlog\\unsuccessfulbuild" because "AlwaysCreate" was specified.
+        Touching "Debug\\CompilerIdCXX.tlog\\unsuccessfulbuild".
+      VcpkgTripletSelection:
+        Using triplet "x64-windows" from "C:\\Users\\Computer\\vcpkg\\installed\\x64-windows\\"
+        Using normalized configuration "Release"
+      ClCompile:
+        D:\\VS\\IDE\\VC\\Tools\\MSVC\\14.37.32822\\bin\\HostX64\\x64\\CL.exe /c /I"C:\\Users\\Computer\\vcpkg\\installed\\x64-windows\\include" /nologo /W0 /WX- /diagnostics:column /Od /D _MBCS /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"Debug\\\\" /Fd"Debug\\vc143.pdb" /external:W0 /Gd /TP /FC /errorReport:queue CMakeCXXCompilerId.cpp
+        CMakeCXXCompilerId.cpp
+      Link:
+        D:\\VS\\IDE\\VC\\Tools\\MSVC\\14.37.32822\\bin\\HostX64\\x64\\link.exe /ERRORREPORT:QUEUE /OUT:".\\CompilerIdCXX.exe" /INCREMENTAL:NO /NOLOGO /LIBPATH:"C:\\Users\\Computer\\vcpkg\\installed\\x64-windows\\lib" /LIBPATH:"C:\\Users\\Computer\\vcpkg\\installed\\x64-windows\\lib\\manual-link" kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib "C:\\Users\\Computer\\vcpkg\\installed\\x64-windows\\lib\\*.lib" /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /PDB:".\\CompilerIdCXX.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:".\\CompilerIdCXX.lib" /MACHINE:X64 Debug\\CMakeCXXCompilerId.obj
+        CompilerIdCXX.vcxproj -> D:\\Projects\\sfml-imgui-engine\\build\\CMakeFiles\\3.29.3\\CompilerIdCXX\\CompilerIdCXX.exe
+      AppLocalFromInstalled:
+        pwsh.exe -ExecutionPolicy Bypass -noprofile -File "C:\\Users\\Computer\\vcpkg\\scripts\\buildsystems\\msbuild\\applocal.ps1" "D:\\Projects\\sfml-imgui-engine\\build\\CMakeFiles\\3.29.3\\CompilerIdCXX\\CompilerIdCXX.exe" "C:\\Users\\Computer\\vcpkg\\installed\\x64-windows\\bin" "Debug\\CompilerIdCXX.tlog\\CompilerIdCXX.write.1u.tlog" "Debug\\vcpkg.applocal.log"
+      PostBuildEvent:
+        for %%i in (cl.exe) do @echo CMAKE_CXX_COMPILER=%%~$PATH:i
+        :VCEnd
+        CMAKE_CXX_COMPILER=D:\\VS\\IDE\\VC\\Tools\\MSVC\\14.37.32822\\bin\\Hostx64\\x64\\cl.exe
+      FinalizeBuildStatus:
+        Deleting file "Debug\\CompilerIdCXX.tlog\\unsuccessfulbuild".
+        Touching "Debug\\CompilerIdCXX.tlog\\CompilerIdCXX.lastbuildstate".
+      Done Building Project "D:\\Projects\\sfml-imgui-engine\\build\\CMakeFiles\\3.29.3\\CompilerIdCXX\\CompilerIdCXX.vcxproj" (default targets).
+      
+      Build succeeded.
+          0 Warning(s)
+          0 Error(s)
+      
+      Time Elapsed 00:00:06.17
+      
+      
+      Compilation of the CXX compiler identification source "CMakeCXXCompilerId.cpp" produced "CompilerIdCXX.exe"
+      
+      Compilation of the CXX compiler identification source "CMakeCXXCompilerId.cpp" produced "CompilerIdCXX.vcxproj"
+      
+      The CXX compiler identification is MSVC, found in:
+        D:/Projects/sfml-imgui-engine/build/CMakeFiles/3.29.3/CompilerIdCXX/CompilerIdCXX.exe
+      
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "C:/Program Files/CMake/share/cmake-3.29/Modules/CMakeDetermineCompilerABI.cmake:67 (try_compile)"
+      - "C:/Program Files/CMake/share/cmake-3.29/Modules/CMakeTestCXXCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "CMakeLists.txt:2 (project)"
+    checks:
+      - "Detecting CXX compiler ABI info"
+    directories:
+      source: "D:/Projects/sfml-imgui-engine/build/CMakeFiles/CMakeScratch/TryCompile-v79j2r"
+      binary: "D:/Projects/sfml-imgui-engine/build/CMakeFiles/CMakeScratch/TryCompile-v79j2r"
+    cmakeVariables:
+      CMAKE_CXX_FLAGS: "/DWIN32 /D_WINDOWS /GR /EHsc"
+      CMAKE_CXX_FLAGS_DEBUG: "/Zi /Ob0 /Od /RTC1"
+      CMAKE_CXX_SCAN_FOR_MODULES: "OFF"
+      CMAKE_EXE_LINKER_FLAGS: "/machine:x64"
+    buildResult:
+      variable: "CMAKE_CXX_ABI_COMPILED"
+      cached: true
+      stdout: |
+        Change Dir: 'D:/Projects/sfml-imgui-engine/build/CMakeFiles/CMakeScratch/TryCompile-v79j2r'
+        
+        Run Build Command(s): D:/VS/IDE/MSBuild/Current/Bin/amd64/MSBuild.exe cmTC_4ef35.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=17.0 /v:n
+        MSBuild version 17.7.2+d6990bcfa for .NET Framework
+        Build started 02/06/2024 12:20:35 pm.
+        
+        Project "D:\\Projects\\sfml-imgui-engine\\build\\CMakeFiles\\CMakeScratch\\TryCompile-v79j2r\\cmTC_4ef35.vcxproj" on node 1 (default targets).
+        PrepareForBuild:
+          Creating directory "cmTC_4ef35.dir\\Debug\\".
+          Creating directory "D:\\Projects\\sfml-imgui-engine\\build\\CMakeFiles\\CMakeScratch\\TryCompile-v79j2r\\Debug\\".
+          Creating directory "cmTC_4ef35.dir\\Debug\\cmTC_4ef35.tlog\\".
+        InitializeBuildStatus:
+          Creating "cmTC_4ef35.dir\\Debug\\cmTC_4ef35.tlog\\unsuccessfulbuild" because "AlwaysCreate" was specified.
+          Touching "cmTC_4ef35.dir\\Debug\\cmTC_4ef35.tlog\\unsuccessfulbuild".
+        VcpkgTripletSelection:
+          Using triplet "x64-windows" from "C:\\Users\\Computer\\vcpkg\\installed\\x64-windows\\"
+          Using normalized configuration "Release"
+        ClCompile:
+          D:\\VS\\IDE\\VC\\Tools\\MSVC\\14.37.32822\\bin\\HostX64\\x64\\CL.exe /c /I"C:\\Users\\Computer\\vcpkg\\installed\\x64-windows\\include" /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /GR /Fo"cmTC_4ef35.dir\\Debug\\\\" /Fd"cmTC_4ef35.dir\\Debug\\vc143.pdb" /external:W1 /Gd /TP /errorReport:queue "C:\\Program Files\\CMake\\share\\cmake-3.29\\Modules\\CMakeCXXCompilerABI.cpp"
+          Microsoft (R) C/C++ Optimizing Compiler Version 19.37.32825 for x64
+          CMakeCXXCompilerABI.cpp
+          Copyright (C) Microsoft Corporation.  All rights reserved.
+          cl /c /I"C:\\Users\\Computer\\vcpkg\\installed\\x64-windows\\include" /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /GR /Fo"cmTC_4ef35.dir\\Debug\\\\" /Fd"cmTC_4ef35.dir\\Debug\\vc143.pdb" /external:W1 /Gd /TP /errorReport:queue "C:\\Program Files\\CMake\\share\\cmake-3.29\\Modules\\CMakeCXXCompilerABI.cpp"
+        Link:
+          D:\\VS\\IDE\\VC\\Tools\\MSVC\\14.37.32822\\bin\\HostX64\\x64\\link.exe /ERRORREPORT:QUEUE /OUT:"D:\\Projects\\sfml-imgui-engine\\build\\CMakeFiles\\CMakeScratch\\TryCompile-v79j2r\\Debug\\cmTC_4ef35.exe" /INCREMENTAL /ILK:"cmTC_4ef35.dir\\Debug\\cmTC_4ef35.ilk" /NOLOGO /LIBPATH:"C:\\Users\\Computer\\vcpkg\\installed\\x64-windows\\lib" /LIBPATH:"C:\\Users\\Computer\\vcpkg\\installed\\x64-windows\\lib\\manual-link" kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib "C:\\Users\\Computer\\vcpkg\\installed\\x64-windows\\lib\\*.lib" /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"D:/Projects/sfml-imgui-engine/build/CMakeFiles/CMakeScratch/TryCompile-v79j2r/Debug/cmTC_4ef35.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"D:/Projects/sfml-imgui-engine/build/CMakeFiles/CMakeScratch/TryCompile-v79j2r/Debug/cmTC_4ef35.lib" /MACHINE:X64  /machine:x64 cmTC_4ef35.dir\\Debug\\CMakeCXXCompilerABI.obj
+          cmTC_4ef35.vcxproj -> D:\\Projects\\sfml-imgui-engine\\build\\CMakeFiles\\CMakeScratch\\TryCompile-v79j2r\\Debug\\cmTC_4ef35.exe
+        AppLocalFromInstalled:
+          pwsh.exe -ExecutionPolicy Bypass -noprofile -File "C:\\Users\\Computer\\vcpkg\\scripts\\buildsystems\\msbuild\\applocal.ps1" "D:\\Projects\\sfml-imgui-engine\\build\\CMakeFiles\\CMakeScratch\\TryCompile-v79j2r\\Debug\\cmTC_4ef35.exe" "C:\\Users\\Computer\\vcpkg\\installed\\x64-windows\\bin" "cmTC_4ef35.dir\\Debug\\cmTC_4ef35.tlog\\cmTC_4ef35.write.1u.tlog" "cmTC_4ef35.dir\\Debug\\vcpkg.applocal.log"
+        FinalizeBuildStatus:
+          Deleting file "cmTC_4ef35.dir\\Debug\\cmTC_4ef35.tlog\\unsuccessfulbuild".
+          Touching "cmTC_4ef35.dir\\Debug\\cmTC_4ef35.tlog\\cmTC_4ef35.lastbuildstate".
+        Done Building Project "D:\\Projects\\sfml-imgui-engine\\build\\CMakeFiles\\CMakeScratch\\TryCompile-v79j2r\\cmTC_4ef35.vcxproj" (default targets).
+        
+        Build succeeded.
+            0 Warning(s)
+            0 Error(s)
+        
+        Time Elapsed 00:00:02.86
+        
+      exitCode: 0
+  -
+    kind: "message-v1"
+    backtrace:
+      - "C:/Program Files/CMake/share/cmake-3.29/Modules/CMakeDetermineCompilerABI.cmake:173 (message)"
+      - "C:/Program Files/CMake/share/cmake-3.29/Modules/CMakeTestCXXCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "CMakeLists.txt:2 (project)"
+    message: |
+      Parsed CXX implicit link information:
+        link line regex: [^( *|.*[/\\])(ld[0-9]*(\\.[a-z]+)?|link\\.exe|lld-link(\\.exe)?|CMAKE_LINK_STARTFILE-NOTFOUND|([^/\\]+-)?ld|collect2)[^/\\]*( |$)]
+        linker tool regex: [^[ 	]*(->|")?[ 	]*(([^"]*[/\\])?(ld[0-9]*(\\.[a-z]+)?|link\\.exe|lld-link(\\.exe)?))("|,| |$)]
+        linker tool for 'CXX': D:/VS/IDE/VC/Tools/MSVC/14.37.32822/bin/HostX64/x64/link.exe
+        implicit libs: []
+        implicit objs: []
+        implicit dirs: []
+        implicit fwks: []
+      
+      
+  -
+    kind: "message-v1"
+    backtrace:
+      - "C:/Program Files/CMake/share/cmake-3.29/Modules/Internal/CMakeDetermineLinkerId.cmake:40 (message)"
+      - "C:/Program Files/CMake/share/cmake-3.29/Modules/CMakeDetermineCompilerABI.cmake:210 (cmake_determine_linker_id)"
+      - "C:/Program Files/CMake/share/cmake-3.29/Modules/CMakeTestCXXCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "CMakeLists.txt:2 (project)"
+    message: |
+      Running the CXX compiler's linker: "D:/VS/IDE/VC/Tools/MSVC/14.37.32822/bin/HostX64/x64/link.exe" "-v"
+      Microsoft (R) Incremental Linker Version 14.37.32825.0
+      Copyright (C) Microsoft Corporation.  All rights reserved.
+  -
+    kind: "message-v1"
+    backtrace:
+      - "C:/Program Files/CMake/share/cmake-3.29/Modules/CMakeDetermineCompilerId.cmake:17 (message)"
+      - "C:/Program Files/CMake/share/cmake-3.29/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "C:/Program Files/CMake/share/cmake-3.29/Modules/CMakeDetermineCCompiler.cmake:123 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "build/_deps/sfml-src/CMakeLists.txt:38 (project)"
+    message: |
+      Compiling the C compiler identification source file "CMakeCCompilerId.c" succeeded.
+      Compiler:  
+      Build flags: 
+      Id flags:  
+      
+      The output was:
+      0
+      MSBuild version 17.7.2+d6990bcfa for .NET Framework
+      Build started 02/06/2024 12:21:45 pm.
+      
+      Project "D:\\Projects\\sfml-imgui-engine\\build\\CMakeFiles\\3.29.3\\CompilerIdC\\CompilerIdC.vcxproj" on node 1 (default targets).
+      PrepareForBuild:
+        Creating directory "Debug\\".
+        Creating directory "Debug\\CompilerIdC.tlog\\".
+      InitializeBuildStatus:
+        Creating "Debug\\CompilerIdC.tlog\\unsuccessfulbuild" because "AlwaysCreate" was specified.
+        Touching "Debug\\CompilerIdC.tlog\\unsuccessfulbuild".
+      VcpkgTripletSelection:
+        Using triplet "x64-windows" from "C:\\Users\\Computer\\vcpkg\\installed\\x64-windows\\"
+        Using normalized configuration "Release"
+      ClCompile:
+        D:\\VS\\IDE\\VC\\Tools\\MSVC\\14.37.32822\\bin\\HostX64\\x64\\CL.exe /c /I"C:\\Users\\Computer\\vcpkg\\installed\\x64-windows\\include" /nologo /W0 /WX- /diagnostics:column /Od /D _MBCS /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"Debug\\\\" /Fd"Debug\\vc143.pdb" /external:W0 /Gd /TC /FC /errorReport:queue CMakeCCompilerId.c
+        CMakeCCompilerId.c
+      Link:
+        D:\\VS\\IDE\\VC\\Tools\\MSVC\\14.37.32822\\bin\\HostX64\\x64\\link.exe /ERRORREPORT:QUEUE /OUT:".\\CompilerIdC.exe" /INCREMENTAL:NO /NOLOGO /LIBPATH:"C:\\Users\\Computer\\vcpkg\\installed\\x64-windows\\lib" /LIBPATH:"C:\\Users\\Computer\\vcpkg\\installed\\x64-windows\\lib\\manual-link" kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib "C:\\Users\\Computer\\vcpkg\\installed\\x64-windows\\lib\\*.lib" /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /PDB:".\\CompilerIdC.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:".\\CompilerIdC.lib" /MACHINE:X64 Debug\\CMakeCCompilerId.obj
+        CompilerIdC.vcxproj -> D:\\Projects\\sfml-imgui-engine\\build\\CMakeFiles\\3.29.3\\CompilerIdC\\CompilerIdC.exe
+      AppLocalFromInstalled:
+        pwsh.exe -ExecutionPolicy Bypass -noprofile -File "C:\\Users\\Computer\\vcpkg\\scripts\\buildsystems\\msbuild\\applocal.ps1" "D:\\Projects\\sfml-imgui-engine\\build\\CMakeFiles\\3.29.3\\CompilerIdC\\CompilerIdC.exe" "C:\\Users\\Computer\\vcpkg\\installed\\x64-windows\\bin" "Debug\\CompilerIdC.tlog\\CompilerIdC.write.1u.tlog" "Debug\\vcpkg.applocal.log"
+      PostBuildEvent:
+        for %%i in (cl.exe) do @echo CMAKE_C_COMPILER=%%~$PATH:i
+        :VCEnd
+        CMAKE_C_COMPILER=D:\\VS\\IDE\\VC\\Tools\\MSVC\\14.37.32822\\bin\\Hostx64\\x64\\cl.exe
+      FinalizeBuildStatus:
+        Deleting file "Debug\\CompilerIdC.tlog\\unsuccessfulbuild".
+        Touching "Debug\\CompilerIdC.tlog\\CompilerIdC.lastbuildstate".
+      Done Building Project "D:\\Projects\\sfml-imgui-engine\\build\\CMakeFiles\\3.29.3\\CompilerIdC\\CompilerIdC.vcxproj" (default targets).
+      
+      Build succeeded.
+          0 Warning(s)
+          0 Error(s)
+      
+      Time Elapsed 00:00:02.85
+      
+      
+      Compilation of the C compiler identification source "CMakeCCompilerId.c" produced "CompilerIdC.exe"
+      
+      Compilation of the C compiler identification source "CMakeCCompilerId.c" produced "CompilerIdC.vcxproj"
+      
+      The C compiler identification is MSVC, found in:
+        D:/Projects/sfml-imgui-engine/build/CMakeFiles/3.29.3/CompilerIdC/CompilerIdC.exe
+      
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "C:/Program Files/CMake/share/cmake-3.29/Modules/CMakeDetermineCompilerABI.cmake:67 (try_compile)"
+      - "C:/Program Files/CMake/share/cmake-3.29/Modules/CMakeTestCCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "build/_deps/sfml-src/CMakeLists.txt:38 (project)"
+    checks:
+      - "Detecting C compiler ABI info"
+    directories:
+      source: "D:/Projects/sfml-imgui-engine/build/CMakeFiles/CMakeScratch/TryCompile-ilmyrf"
+      binary: "D:/Projects/sfml-imgui-engine/build/CMakeFiles/CMakeScratch/TryCompile-ilmyrf"
+    cmakeVariables:
+      CMAKE_C_FLAGS: "/DWIN32 /D_WINDOWS"
+      CMAKE_C_FLAGS_DEBUG: "/Zi /Ob0 /Od /RTC1"
+      CMAKE_EXE_LINKER_FLAGS: "/machine:x64"
+      CMAKE_OSX_SYSROOT: ""
+      CMAKE_USER_MAKE_RULES_OVERRIDE: "D:/Projects/sfml-imgui-engine/build/_deps/sfml-src/cmake/CompilerOptionsOverride.cmake"
+    buildResult:
+      variable: "CMAKE_C_ABI_COMPILED"
+      cached: true
+      stdout: |
+        Change Dir: 'D:/Projects/sfml-imgui-engine/build/CMakeFiles/CMakeScratch/TryCompile-ilmyrf'
+        
+        Run Build Command(s): D:/VS/IDE/MSBuild/Current/Bin/amd64/MSBuild.exe cmTC_5f8df.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=17.0 /v:n
+        MSBuild version 17.7.2+d6990bcfa for .NET Framework
+        Build started 02/06/2024 12:21:49 pm.
+        
+        Project "D:\\Projects\\sfml-imgui-engine\\build\\CMakeFiles\\CMakeScratch\\TryCompile-ilmyrf\\cmTC_5f8df.vcxproj" on node 1 (default targets).
+        PrepareForBuild:
+          Creating directory "cmTC_5f8df.dir\\Debug\\".
+          Creating directory "D:\\Projects\\sfml-imgui-engine\\build\\CMakeFiles\\CMakeScratch\\TryCompile-ilmyrf\\Debug\\".
+          Creating directory "cmTC_5f8df.dir\\Debug\\cmTC_5f8df.tlog\\".
+        InitializeBuildStatus:
+          Creating "cmTC_5f8df.dir\\Debug\\cmTC_5f8df.tlog\\unsuccessfulbuild" because "AlwaysCreate" was specified.
+          Touching "cmTC_5f8df.dir\\Debug\\cmTC_5f8df.tlog\\unsuccessfulbuild".
+        VcpkgTripletSelection:
+          Using triplet "x64-windows" from "C:\\Users\\Computer\\vcpkg\\installed\\x64-windows\\"
+          Using normalized configuration "Release"
+        ClCompile:
+          D:\\VS\\IDE\\VC\\Tools\\MSVC\\14.37.32822\\bin\\HostX64\\x64\\CL.exe /c /I"C:\\Users\\Computer\\vcpkg\\installed\\x64-windows\\include" /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_5f8df.dir\\Debug\\\\" /Fd"cmTC_5f8df.dir\\Debug\\vc143.pdb" /external:W1 /Gd /TC /errorReport:queue "C:\\Program Files\\CMake\\share\\cmake-3.29\\Modules\\CMakeCCompilerABI.c"
+          Microsoft (R) C/C++ Optimizing Compiler Version 19.37.32825 for x64
+          CMakeCCompilerABI.c
+          Copyright (C) Microsoft Corporation.  All rights reserved.
+          cl /c /I"C:\\Users\\Computer\\vcpkg\\installed\\x64-windows\\include" /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_5f8df.dir\\Debug\\\\" /Fd"cmTC_5f8df.dir\\Debug\\vc143.pdb" /external:W1 /Gd /TC /errorReport:queue "C:\\Program Files\\CMake\\share\\cmake-3.29\\Modules\\CMakeCCompilerABI.c"
+        Link:
+          D:\\VS\\IDE\\VC\\Tools\\MSVC\\14.37.32822\\bin\\HostX64\\x64\\link.exe /ERRORREPORT:QUEUE /OUT:"D:\\Projects\\sfml-imgui-engine\\build\\CMakeFiles\\CMakeScratch\\TryCompile-ilmyrf\\Debug\\cmTC_5f8df.exe" /INCREMENTAL /ILK:"cmTC_5f8df.dir\\Debug\\cmTC_5f8df.ilk" /NOLOGO /LIBPATH:"C:\\Users\\Computer\\vcpkg\\installed\\x64-windows\\lib" /LIBPATH:"C:\\Users\\Computer\\vcpkg\\installed\\x64-windows\\lib\\manual-link" kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib "C:\\Users\\Computer\\vcpkg\\installed\\x64-windows\\lib\\*.lib" /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"D:/Projects/sfml-imgui-engine/build/CMakeFiles/CMakeScratch/TryCompile-ilmyrf/Debug/cmTC_5f8df.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"D:/Projects/sfml-imgui-engine/build/CMakeFiles/CMakeScratch/TryCompile-ilmyrf/Debug/cmTC_5f8df.lib" /MACHINE:X64  /machine:x64 cmTC_5f8df.dir\\Debug\\CMakeCCompilerABI.obj
+          cmTC_5f8df.vcxproj -> D:\\Projects\\sfml-imgui-engine\\build\\CMakeFiles\\CMakeScratch\\TryCompile-ilmyrf\\Debug\\cmTC_5f8df.exe
+        AppLocalFromInstalled:
+          pwsh.exe -ExecutionPolicy Bypass -noprofile -File "C:\\Users\\Computer\\vcpkg\\scripts\\buildsystems\\msbuild\\applocal.ps1" "D:\\Projects\\sfml-imgui-engine\\build\\CMakeFiles\\CMakeScratch\\TryCompile-ilmyrf\\Debug\\cmTC_5f8df.exe" "C:\\Users\\Computer\\vcpkg\\installed\\x64-windows\\bin" "cmTC_5f8df.dir\\Debug\\cmTC_5f8df.tlog\\cmTC_5f8df.write.1u.tlog" "cmTC_5f8df.dir\\Debug\\vcpkg.applocal.log"
+        FinalizeBuildStatus:
+          Deleting file "cmTC_5f8df.dir\\Debug\\cmTC_5f8df.tlog\\unsuccessfulbuild".
+          Touching "cmTC_5f8df.dir\\Debug\\cmTC_5f8df.tlog\\cmTC_5f8df.lastbuildstate".
+        Done Building Project "D:\\Projects\\sfml-imgui-engine\\build\\CMakeFiles\\CMakeScratch\\TryCompile-ilmyrf\\cmTC_5f8df.vcxproj" (default targets).
+        
+        Build succeeded.
+            0 Warning(s)
+            0 Error(s)
+        
+        Time Elapsed 00:00:02.78
+        
+      exitCode: 0
+  -
+    kind: "message-v1"
+    backtrace:
+      - "C:/Program Files/CMake/share/cmake-3.29/Modules/CMakeDetermineCompilerABI.cmake:173 (message)"
+      - "C:/Program Files/CMake/share/cmake-3.29/Modules/CMakeTestCCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "build/_deps/sfml-src/CMakeLists.txt:38 (project)"
+    message: |
+      Parsed C implicit link information:
+        link line regex: [^( *|.*[/\\])(ld[0-9]*(\\.[a-z]+)?|link\\.exe|lld-link(\\.exe)?|CMAKE_LINK_STARTFILE-NOTFOUND|([^/\\]+-)?ld|collect2)[^/\\]*( |$)]
+        linker tool regex: [^[ 	]*(->|")?[ 	]*(([^"]*[/\\])?(ld[0-9]*(\\.[a-z]+)?|link\\.exe|lld-link(\\.exe)?))("|,| |$)]
+        linker tool for 'C': D:/VS/IDE/VC/Tools/MSVC/14.37.32822/bin/HostX64/x64/link.exe
+        implicit libs: []
+        implicit objs: []
+        implicit dirs: []
+        implicit fwks: []
+      
+      
+  -
+    kind: "message-v1"
+    backtrace:
+      - "C:/Program Files/CMake/share/cmake-3.29/Modules/Internal/CMakeDetermineLinkerId.cmake:40 (message)"
+      - "C:/Program Files/CMake/share/cmake-3.29/Modules/CMakeDetermineCompilerABI.cmake:210 (cmake_determine_linker_id)"
+      - "C:/Program Files/CMake/share/cmake-3.29/Modules/CMakeTestCCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "build/_deps/sfml-src/CMakeLists.txt:38 (project)"
+    message: |
+      Running the C compiler's linker: "D:/VS/IDE/VC/Tools/MSVC/14.37.32822/bin/HostX64/x64/link.exe" "-v"
+      Microsoft (R) Incremental Linker Version 14.37.32825.0
+      Copyright (C) Microsoft Corporation.  All rights reserved.
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "C:/Program Files/CMake/share/cmake-3.29/Modules/CheckIncludeFile.cmake:90 (try_compile)"
+      - "C:/Program Files/CMake/share/cmake-3.29/Modules/CheckTypeSize.cmake:250 (check_include_file)"
+      - "build/_deps/sfml-src/cmake/Config.cmake:10 (check_type_size)"
+      - "build/_deps/sfml-src/CMakeLists.txt:41 (include)"
+    checks:
+      - "Looking for sys/types.h"
+    directories:
+      source: "D:/Projects/sfml-imgui-engine/build/CMakeFiles/CMakeScratch/TryCompile-f4f6lf"
+      binary: "D:/Projects/sfml-imgui-engine/build/CMakeFiles/CMakeScratch/TryCompile-f4f6lf"
+    cmakeVariables:
+      CMAKE_C_FLAGS: "/DWIN32 /D_WINDOWS"
+      CMAKE_C_FLAGS_DEBUG: "/Zi /Ob0 /Od /RTC1"
+      CMAKE_EXE_LINKER_FLAGS: "/machine:x64"
+      CMAKE_OSX_SYSROOT: ""
+      CMAKE_USER_MAKE_RULES_OVERRIDE: "D:/Projects/sfml-imgui-engine/build/_deps/sfml-src/cmake/CompilerOptionsOverride.cmake"
+    buildResult:
+      variable: "HAVE_SYS_TYPES_H"
+      cached: true
+      stdout: |
+        Change Dir: 'D:/Projects/sfml-imgui-engine/build/CMakeFiles/CMakeScratch/TryCompile-f4f6lf'
+        
+        Run Build Command(s): D:/VS/IDE/MSBuild/Current/Bin/amd64/MSBuild.exe cmTC_7783a.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=17.0 /v:n
+        MSBuild version 17.7.2+d6990bcfa for .NET Framework
+        Build started 02/06/2024 12:21:52 pm.
+        
+        Project "D:\\Projects\\sfml-imgui-engine\\build\\CMakeFiles\\CMakeScratch\\TryCompile-f4f6lf\\cmTC_7783a.vcxproj" on node 1 (default targets).
+        PrepareForBuild:
+          Creating directory "cmTC_7783a.dir\\Debug\\".
+          Creating directory "D:\\Projects\\sfml-imgui-engine\\build\\CMakeFiles\\CMakeScratch\\TryCompile-f4f6lf\\Debug\\".
+          Creating directory "cmTC_7783a.dir\\Debug\\cmTC_7783a.tlog\\".
+        InitializeBuildStatus:
+          Creating "cmTC_7783a.dir\\Debug\\cmTC_7783a.tlog\\unsuccessfulbuild" because "AlwaysCreate" was specified.
+          Touching "cmTC_7783a.dir\\Debug\\cmTC_7783a.tlog\\unsuccessfulbuild".
+        VcpkgTripletSelection:
+          Using triplet "x64-windows" from "C:\\Users\\Computer\\vcpkg\\installed\\x64-windows\\"
+          Using normalized configuration "Release"
+        ClCompile:
+          D:\\VS\\IDE\\VC\\Tools\\MSVC\\14.37.32822\\bin\\HostX64\\x64\\CL.exe /c /I"C:\\Users\\Computer\\vcpkg\\installed\\x64-windows\\include" /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_7783a.dir\\Debug\\\\" /Fd"cmTC_7783a.dir\\Debug\\vc143.pdb" /external:W1 /Gd /TC /errorReport:queue "D:\\Projects\\sfml-imgui-engine\\build\\CMakeFiles\\CMakeScratch\\TryCompile-f4f6lf\\CheckIncludeFile.c"
+          Microsoft (R) C/C++ Optimizing Compiler Version 19.37.32825 for x64
+          CheckIncludeFile.c
+          Copyright (C) Microsoft Corporation.  All rights reserved.
+          cl /c /I"C:\\Users\\Computer\\vcpkg\\installed\\x64-windows\\include" /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_7783a.dir\\Debug\\\\" /Fd"cmTC_7783a.dir\\Debug\\vc143.pdb" /external:W1 /Gd /TC /errorReport:queue "D:\\Projects\\sfml-imgui-engine\\build\\CMakeFiles\\CMakeScratch\\TryCompile-f4f6lf\\CheckIncludeFile.c"
+        Link:
+          D:\\VS\\IDE\\VC\\Tools\\MSVC\\14.37.32822\\bin\\HostX64\\x64\\link.exe /ERRORREPORT:QUEUE /OUT:"D:\\Projects\\sfml-imgui-engine\\build\\CMakeFiles\\CMakeScratch\\TryCompile-f4f6lf\\Debug\\cmTC_7783a.exe" /INCREMENTAL /ILK:"cmTC_7783a.dir\\Debug\\cmTC_7783a.ilk" /NOLOGO /LIBPATH:"C:\\Users\\Computer\\vcpkg\\installed\\x64-windows\\lib" /LIBPATH:"C:\\Users\\Computer\\vcpkg\\installed\\x64-windows\\lib\\manual-link" kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib "C:\\Users\\Computer\\vcpkg\\installed\\x64-windows\\lib\\*.lib" /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"D:/Projects/sfml-imgui-engine/build/CMakeFiles/CMakeScratch/TryCompile-f4f6lf/Debug/cmTC_7783a.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"D:/Projects/sfml-imgui-engine/build/CMakeFiles/CMakeScratch/TryCompile-f4f6lf/Debug/cmTC_7783a.lib" /MACHINE:X64  /machine:x64 cmTC_7783a.dir\\Debug\\CheckIncludeFile.obj
+          cmTC_7783a.vcxproj -> D:\\Projects\\sfml-imgui-engine\\build\\CMakeFiles\\CMakeScratch\\TryCompile-f4f6lf\\Debug\\cmTC_7783a.exe
+        AppLocalFromInstalled:
+          pwsh.exe -ExecutionPolicy Bypass -noprofile -File "C:\\Users\\Computer\\vcpkg\\scripts\\buildsystems\\msbuild\\applocal.ps1" "D:\\Projects\\sfml-imgui-engine\\build\\CMakeFiles\\CMakeScratch\\TryCompile-f4f6lf\\Debug\\cmTC_7783a.exe" "C:\\Users\\Computer\\vcpkg\\installed\\x64-windows\\bin" "cmTC_7783a.dir\\Debug\\cmTC_7783a.tlog\\cmTC_7783a.write.1u.tlog" "cmTC_7783a.dir\\Debug\\vcpkg.applocal.log"
+        FinalizeBuildStatus:
+          Deleting file "cmTC_7783a.dir\\Debug\\cmTC_7783a.tlog\\unsuccessfulbuild".
+          Touching "cmTC_7783a.dir\\Debug\\cmTC_7783a.tlog\\cmTC_7783a.lastbuildstate".
+        Done Building Project "D:\\Projects\\sfml-imgui-engine\\build\\CMakeFiles\\CMakeScratch\\TryCompile-f4f6lf\\cmTC_7783a.vcxproj" (default targets).
+        
+        Build succeeded.
+            0 Warning(s)
+            0 Error(s)
+        
+        Time Elapsed 00:00:03.00
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "C:/Program Files/CMake/share/cmake-3.29/Modules/CheckIncludeFile.cmake:90 (try_compile)"
+      - "C:/Program Files/CMake/share/cmake-3.29/Modules/CheckTypeSize.cmake:251 (check_include_file)"
+      - "build/_deps/sfml-src/cmake/Config.cmake:10 (check_type_size)"
+      - "build/_deps/sfml-src/CMakeLists.txt:41 (include)"
+    checks:
+      - "Looking for stdint.h"
+    directories:
+      source: "D:/Projects/sfml-imgui-engine/build/CMakeFiles/CMakeScratch/TryCompile-n765li"
+      binary: "D:/Projects/sfml-imgui-engine/build/CMakeFiles/CMakeScratch/TryCompile-n765li"
+    cmakeVariables:
+      CMAKE_C_FLAGS: "/DWIN32 /D_WINDOWS"
+      CMAKE_C_FLAGS_DEBUG: "/Zi /Ob0 /Od /RTC1"
+      CMAKE_EXE_LINKER_FLAGS: "/machine:x64"
+      CMAKE_OSX_SYSROOT: ""
+      CMAKE_USER_MAKE_RULES_OVERRIDE: "D:/Projects/sfml-imgui-engine/build/_deps/sfml-src/cmake/CompilerOptionsOverride.cmake"
+    buildResult:
+      variable: "HAVE_STDINT_H"
+      cached: true
+      stdout: |
+        Change Dir: 'D:/Projects/sfml-imgui-engine/build/CMakeFiles/CMakeScratch/TryCompile-n765li'
+        
+        Run Build Command(s): D:/VS/IDE/MSBuild/Current/Bin/amd64/MSBuild.exe cmTC_ca5fe.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=17.0 /v:n
+        MSBuild version 17.7.2+d6990bcfa for .NET Framework
+        Build started 02/06/2024 12:21:55 pm.
+        
+        Project "D:\\Projects\\sfml-imgui-engine\\build\\CMakeFiles\\CMakeScratch\\TryCompile-n765li\\cmTC_ca5fe.vcxproj" on node 1 (default targets).
+        PrepareForBuild:
+          Creating directory "cmTC_ca5fe.dir\\Debug\\".
+          Creating directory "D:\\Projects\\sfml-imgui-engine\\build\\CMakeFiles\\CMakeScratch\\TryCompile-n765li\\Debug\\".
+          Creating directory "cmTC_ca5fe.dir\\Debug\\cmTC_ca5fe.tlog\\".
+        InitializeBuildStatus:
+          Creating "cmTC_ca5fe.dir\\Debug\\cmTC_ca5fe.tlog\\unsuccessfulbuild" because "AlwaysCreate" was specified.
+          Touching "cmTC_ca5fe.dir\\Debug\\cmTC_ca5fe.tlog\\unsuccessfulbuild".
+        VcpkgTripletSelection:
+          Using triplet "x64-windows" from "C:\\Users\\Computer\\vcpkg\\installed\\x64-windows\\"
+          Using normalized configuration "Release"
+        ClCompile:
+          D:\\VS\\IDE\\VC\\Tools\\MSVC\\14.37.32822\\bin\\HostX64\\x64\\CL.exe /c /I"C:\\Users\\Computer\\vcpkg\\installed\\x64-windows\\include" /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_ca5fe.dir\\Debug\\\\" /Fd"cmTC_ca5fe.dir\\Debug\\vc143.pdb" /external:W1 /Gd /TC /errorReport:queue "D:\\Projects\\sfml-imgui-engine\\build\\CMakeFiles\\CMakeScratch\\TryCompile-n765li\\CheckIncludeFile.c"
+          Microsoft (R) C/C++ Optimizing Compiler Version 19.37.32825 for x64
+          CheckIncludeFile.c
+          Copyright (C) Microsoft Corporation.  All rights reserved.
+          cl /c /I"C:\\Users\\Computer\\vcpkg\\installed\\x64-windows\\include" /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_ca5fe.dir\\Debug\\\\" /Fd"cmTC_ca5fe.dir\\Debug\\vc143.pdb" /external:W1 /Gd /TC /errorReport:queue "D:\\Projects\\sfml-imgui-engine\\build\\CMakeFiles\\CMakeScratch\\TryCompile-n765li\\CheckIncludeFile.c"
+        Link:
+          D:\\VS\\IDE\\VC\\Tools\\MSVC\\14.37.32822\\bin\\HostX64\\x64\\link.exe /ERRORREPORT:QUEUE /OUT:"D:\\Projects\\sfml-imgui-engine\\build\\CMakeFiles\\CMakeScratch\\TryCompile-n765li\\Debug\\cmTC_ca5fe.exe" /INCREMENTAL /ILK:"cmTC_ca5fe.dir\\Debug\\cmTC_ca5fe.ilk" /NOLOGO /LIBPATH:"C:\\Users\\Computer\\vcpkg\\installed\\x64-windows\\lib" /LIBPATH:"C:\\Users\\Computer\\vcpkg\\installed\\x64-windows\\lib\\manual-link" kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib "C:\\Users\\Computer\\vcpkg\\installed\\x64-windows\\lib\\*.lib" /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"D:/Projects/sfml-imgui-engine/build/CMakeFiles/CMakeScratch/TryCompile-n765li/Debug/cmTC_ca5fe.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"D:/Projects/sfml-imgui-engine/build/CMakeFiles/CMakeScratch/TryCompile-n765li/Debug/cmTC_ca5fe.lib" /MACHINE:X64  /machine:x64 cmTC_ca5fe.dir\\Debug\\CheckIncludeFile.obj
+          cmTC_ca5fe.vcxproj -> D:\\Projects\\sfml-imgui-engine\\build\\CMakeFiles\\CMakeScratch\\TryCompile-n765li\\Debug\\cmTC_ca5fe.exe
+        AppLocalFromInstalled:
+          pwsh.exe -ExecutionPolicy Bypass -noprofile -File "C:\\Users\\Computer\\vcpkg\\scripts\\buildsystems\\msbuild\\applocal.ps1" "D:\\Projects\\sfml-imgui-engine\\build\\CMakeFiles\\CMakeScratch\\TryCompile-n765li\\Debug\\cmTC_ca5fe.exe" "C:\\Users\\Computer\\vcpkg\\installed\\x64-windows\\bin" "cmTC_ca5fe.dir\\Debug\\cmTC_ca5fe.tlog\\cmTC_ca5fe.write.1u.tlog" "cmTC_ca5fe.dir\\Debug\\vcpkg.applocal.log"
+        FinalizeBuildStatus:
+          Deleting file "cmTC_ca5fe.dir\\Debug\\cmTC_ca5fe.tlog\\unsuccessfulbuild".
+          Touching "cmTC_ca5fe.dir\\Debug\\cmTC_ca5fe.tlog\\cmTC_ca5fe.lastbuildstate".
+        Done Building Project "D:\\Projects\\sfml-imgui-engine\\build\\CMakeFiles\\CMakeScratch\\TryCompile-n765li\\cmTC_ca5fe.vcxproj" (default targets).
+        
+        Build succeeded.
+            0 Warning(s)
+            0 Error(s)
+        
+        Time Elapsed 00:00:02.80
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "C:/Program Files/CMake/share/cmake-3.29/Modules/CheckIncludeFile.cmake:90 (try_compile)"
+      - "C:/Program Files/CMake/share/cmake-3.29/Modules/CheckTypeSize.cmake:252 (check_include_file)"
+      - "build/_deps/sfml-src/cmake/Config.cmake:10 (check_type_size)"
+      - "build/_deps/sfml-src/CMakeLists.txt:41 (include)"
+    checks:
+      - "Looking for stddef.h"
+    directories:
+      source: "D:/Projects/sfml-imgui-engine/build/CMakeFiles/CMakeScratch/TryCompile-4mwcv2"
+      binary: "D:/Projects/sfml-imgui-engine/build/CMakeFiles/CMakeScratch/TryCompile-4mwcv2"
+    cmakeVariables:
+      CMAKE_C_FLAGS: "/DWIN32 /D_WINDOWS"
+      CMAKE_C_FLAGS_DEBUG: "/Zi /Ob0 /Od /RTC1"
+      CMAKE_EXE_LINKER_FLAGS: "/machine:x64"
+      CMAKE_OSX_SYSROOT: ""
+      CMAKE_USER_MAKE_RULES_OVERRIDE: "D:/Projects/sfml-imgui-engine/build/_deps/sfml-src/cmake/CompilerOptionsOverride.cmake"
+    buildResult:
+      variable: "HAVE_STDDEF_H"
+      cached: true
+      stdout: |
+        Change Dir: 'D:/Projects/sfml-imgui-engine/build/CMakeFiles/CMakeScratch/TryCompile-4mwcv2'
+        
+        Run Build Command(s): D:/VS/IDE/MSBuild/Current/Bin/amd64/MSBuild.exe cmTC_9c537.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=17.0 /v:n
+        MSBuild version 17.7.2+d6990bcfa for .NET Framework
+        Build started 02/06/2024 12:21:58 pm.
+        
+        Project "D:\\Projects\\sfml-imgui-engine\\build\\CMakeFiles\\CMakeScratch\\TryCompile-4mwcv2\\cmTC_9c537.vcxproj" on node 1 (default targets).
+        PrepareForBuild:
+          Creating directory "cmTC_9c537.dir\\Debug\\".
+          Creating directory "D:\\Projects\\sfml-imgui-engine\\build\\CMakeFiles\\CMakeScratch\\TryCompile-4mwcv2\\Debug\\".
+          Creating directory "cmTC_9c537.dir\\Debug\\cmTC_9c537.tlog\\".
+        InitializeBuildStatus:
+          Creating "cmTC_9c537.dir\\Debug\\cmTC_9c537.tlog\\unsuccessfulbuild" because "AlwaysCreate" was specified.
+          Touching "cmTC_9c537.dir\\Debug\\cmTC_9c537.tlog\\unsuccessfulbuild".
+        VcpkgTripletSelection:
+          Using triplet "x64-windows" from "C:\\Users\\Computer\\vcpkg\\installed\\x64-windows\\"
+          Using normalized configuration "Release"
+        ClCompile:
+          D:\\VS\\IDE\\VC\\Tools\\MSVC\\14.37.32822\\bin\\HostX64\\x64\\CL.exe /c /I"C:\\Users\\Computer\\vcpkg\\installed\\x64-windows\\include" /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_9c537.dir\\Debug\\\\" /Fd"cmTC_9c537.dir\\Debug\\vc143.pdb" /external:W1 /Gd /TC /errorReport:queue "D:\\Projects\\sfml-imgui-engine\\build\\CMakeFiles\\CMakeScratch\\TryCompile-4mwcv2\\CheckIncludeFile.c"
+          Microsoft (R) C/C++ Optimizing Compiler Version 19.37.32825 for x64
+          CheckIncludeFile.c
+          Copyright (C) Microsoft Corporation.  All rights reserved.
+          cl /c /I"C:\\Users\\Computer\\vcpkg\\installed\\x64-windows\\include" /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_9c537.dir\\Debug\\\\" /Fd"cmTC_9c537.dir\\Debug\\vc143.pdb" /external:W1 /Gd /TC /errorReport:queue "D:\\Projects\\sfml-imgui-engine\\build\\CMakeFiles\\CMakeScratch\\TryCompile-4mwcv2\\CheckIncludeFile.c"
+        Link:
+          D:\\VS\\IDE\\VC\\Tools\\MSVC\\14.37.32822\\bin\\HostX64\\x64\\link.exe /ERRORREPORT:QUEUE /OUT:"D:\\Projects\\sfml-imgui-engine\\build\\CMakeFiles\\CMakeScratch\\TryCompile-4mwcv2\\Debug\\cmTC_9c537.exe" /INCREMENTAL /ILK:"cmTC_9c537.dir\\Debug\\cmTC_9c537.ilk" /NOLOGO /LIBPATH:"C:\\Users\\Computer\\vcpkg\\installed\\x64-windows\\lib" /LIBPATH:"C:\\Users\\Computer\\vcpkg\\installed\\x64-windows\\lib\\manual-link" kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib "C:\\Users\\Computer\\vcpkg\\installed\\x64-windows\\lib\\*.lib" /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"D:/Projects/sfml-imgui-engine/build/CMakeFiles/CMakeScratch/TryCompile-4mwcv2/Debug/cmTC_9c537.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"D:/Projects/sfml-imgui-engine/build/CMakeFiles/CMakeScratch/TryCompile-4mwcv2/Debug/cmTC_9c537.lib" /MACHINE:X64  /machine:x64 cmTC_9c537.dir\\Debug\\CheckIncludeFile.obj
+          cmTC_9c537.vcxproj -> D:\\Projects\\sfml-imgui-engine\\build\\CMakeFiles\\CMakeScratch\\TryCompile-4mwcv2\\Debug\\cmTC_9c537.exe
+        AppLocalFromInstalled:
+          pwsh.exe -ExecutionPolicy Bypass -noprofile -File "C:\\Users\\Computer\\vcpkg\\scripts\\buildsystems\\msbuild\\applocal.ps1" "D:\\Projects\\sfml-imgui-engine\\build\\CMakeFiles\\CMakeScratch\\TryCompile-4mwcv2\\Debug\\cmTC_9c537.exe" "C:\\Users\\Computer\\vcpkg\\installed\\x64-windows\\bin" "cmTC_9c537.dir\\Debug\\cmTC_9c537.tlog\\cmTC_9c537.write.1u.tlog" "cmTC_9c537.dir\\Debug\\vcpkg.applocal.log"
+        FinalizeBuildStatus:
+          Deleting file "cmTC_9c537.dir\\Debug\\cmTC_9c537.tlog\\unsuccessfulbuild".
+          Touching "cmTC_9c537.dir\\Debug\\cmTC_9c537.tlog\\cmTC_9c537.lastbuildstate".
+        Done Building Project "D:\\Projects\\sfml-imgui-engine\\build\\CMakeFiles\\CMakeScratch\\TryCompile-4mwcv2\\cmTC_9c537.vcxproj" (default targets).
+        
+        Build succeeded.
+            0 Warning(s)
+            0 Error(s)
+        
+        Time Elapsed 00:00:02.82
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "C:/Program Files/CMake/share/cmake-3.29/Modules/CheckTypeSize.cmake:146 (try_compile)"
+      - "C:/Program Files/CMake/share/cmake-3.29/Modules/CheckTypeSize.cmake:271 (__check_type_size_impl)"
+      - "build/_deps/sfml-src/cmake/Config.cmake:10 (check_type_size)"
+      - "build/_deps/sfml-src/CMakeLists.txt:41 (include)"
+    checks:
+      - "Check size of void*"
+    directories:
+      source: "D:/Projects/sfml-imgui-engine/build/CMakeFiles/CMakeScratch/TryCompile-begcd0"
+      binary: "D:/Projects/sfml-imgui-engine/build/CMakeFiles/CMakeScratch/TryCompile-begcd0"
+    cmakeVariables:
+      CMAKE_C_FLAGS: "/DWIN32 /D_WINDOWS"
+      CMAKE_C_FLAGS_DEBUG: "/Zi /Ob0 /Od /RTC1"
+      CMAKE_EXE_LINKER_FLAGS: "/machine:x64"
+      CMAKE_OSX_SYSROOT: ""
+      CMAKE_USER_MAKE_RULES_OVERRIDE: "D:/Projects/sfml-imgui-engine/build/_deps/sfml-src/cmake/CompilerOptionsOverride.cmake"
+    buildResult:
+      variable: "HAVE_SIZEOF_VOID_PTR"
+      cached: true
+      stdout: |
+        Change Dir: 'D:/Projects/sfml-imgui-engine/build/CMakeFiles/CMakeScratch/TryCompile-begcd0'
+        
+        Run Build Command(s): D:/VS/IDE/MSBuild/Current/Bin/amd64/MSBuild.exe cmTC_7b74f.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=17.0 /v:n
+        MSBuild version 17.7.2+d6990bcfa for .NET Framework
+        Build started 02/06/2024 12:22:02 pm.
+        
+        Project "D:\\Projects\\sfml-imgui-engine\\build\\CMakeFiles\\CMakeScratch\\TryCompile-begcd0\\cmTC_7b74f.vcxproj" on node 1 (default targets).
+        PrepareForBuild:
+          Creating directory "cmTC_7b74f.dir\\Debug\\".
+          Creating directory "D:\\Projects\\sfml-imgui-engine\\build\\CMakeFiles\\CMakeScratch\\TryCompile-begcd0\\Debug\\".
+          Creating directory "cmTC_7b74f.dir\\Debug\\cmTC_7b74f.tlog\\".
+        InitializeBuildStatus:
+          Creating "cmTC_7b74f.dir\\Debug\\cmTC_7b74f.tlog\\unsuccessfulbuild" because "AlwaysCreate" was specified.
+          Touching "cmTC_7b74f.dir\\Debug\\cmTC_7b74f.tlog\\unsuccessfulbuild".
+        VcpkgTripletSelection:
+          Using triplet "x64-windows" from "C:\\Users\\Computer\\vcpkg\\installed\\x64-windows\\"
+          Using normalized configuration "Release"
+        ClCompile:
+          D:\\VS\\IDE\\VC\\Tools\\MSVC\\14.37.32822\\bin\\HostX64\\x64\\CL.exe /c /I"C:\\Users\\Computer\\vcpkg\\installed\\x64-windows\\include" /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_7b74f.dir\\Debug\\\\" /Fd"cmTC_7b74f.dir\\Debug\\vc143.pdb" /external:W1 /Gd /TC /errorReport:queue "D:\\Projects\\sfml-imgui-engine\\build\\CMakeFiles\\CMakeScratch\\TryCompile-begcd0\\SIZEOF_VOID_PTR.c"
+          Microsoft (R) C/C++ Optimizing Compiler Version 19.37.32825 for x64
+          SIZEOF_VOID_PTR.c
+          Copyright (C) Microsoft Corporation.  All rights reserved.
+          cl /c /I"C:\\Users\\Computer\\vcpkg\\installed\\x64-windows\\include" /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_7b74f.dir\\Debug\\\\" /Fd"cmTC_7b74f.dir\\Debug\\vc143.pdb" /external:W1 /Gd /TC /errorReport:queue "D:\\Projects\\sfml-imgui-engine\\build\\CMakeFiles\\CMakeScratch\\TryCompile-begcd0\\SIZEOF_VOID_PTR.c"
+        Link:
+          D:\\VS\\IDE\\VC\\Tools\\MSVC\\14.37.32822\\bin\\HostX64\\x64\\link.exe /ERRORREPORT:QUEUE /OUT:"D:\\Projects\\sfml-imgui-engine\\build\\CMakeFiles\\CMakeScratch\\TryCompile-begcd0\\Debug\\cmTC_7b74f.exe" /INCREMENTAL /ILK:"cmTC_7b74f.dir\\Debug\\cmTC_7b74f.ilk" /NOLOGO /LIBPATH:"C:\\Users\\Computer\\vcpkg\\installed\\x64-windows\\lib" /LIBPATH:"C:\\Users\\Computer\\vcpkg\\installed\\x64-windows\\lib\\manual-link" kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib "C:\\Users\\Computer\\vcpkg\\installed\\x64-windows\\lib\\*.lib" /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"D:/Projects/sfml-imgui-engine/build/CMakeFiles/CMakeScratch/TryCompile-begcd0/Debug/cmTC_7b74f.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"D:/Projects/sfml-imgui-engine/build/CMakeFiles/CMakeScratch/TryCompile-begcd0/Debug/cmTC_7b74f.lib" /MACHINE:X64  /machine:x64 cmTC_7b74f.dir\\Debug\\SIZEOF_VOID_PTR.obj
+          cmTC_7b74f.vcxproj -> D:\\Projects\\sfml-imgui-engine\\build\\CMakeFiles\\CMakeScratch\\TryCompile-begcd0\\Debug\\cmTC_7b74f.exe
+        AppLocalFromInstalled:
+          pwsh.exe -ExecutionPolicy Bypass -noprofile -File "C:\\Users\\Computer\\vcpkg\\scripts\\buildsystems\\msbuild\\applocal.ps1" "D:\\Projects\\sfml-imgui-engine\\build\\CMakeFiles\\CMakeScratch\\TryCompile-begcd0\\Debug\\cmTC_7b74f.exe" "C:\\Users\\Computer\\vcpkg\\installed\\x64-windows\\bin" "cmTC_7b74f.dir\\Debug\\cmTC_7b74f.tlog\\cmTC_7b74f.write.1u.tlog" "cmTC_7b74f.dir\\Debug\\vcpkg.applocal.log"
+        FinalizeBuildStatus:
+          Deleting file "cmTC_7b74f.dir\\Debug\\cmTC_7b74f.tlog\\unsuccessfulbuild".
+          Touching "cmTC_7b74f.dir\\Debug\\cmTC_7b74f.tlog\\cmTC_7b74f.lastbuildstate".
+        Done Building Project "D:\\Projects\\sfml-imgui-engine\\build\\CMakeFiles\\CMakeScratch\\TryCompile-begcd0\\cmTC_7b74f.vcxproj" (default targets).
+        
+        Build succeeded.
+            0 Warning(s)
+            0 Error(s)
+        
+        Time Elapsed 00:00:03.40
+        
+      exitCode: 0
+...
