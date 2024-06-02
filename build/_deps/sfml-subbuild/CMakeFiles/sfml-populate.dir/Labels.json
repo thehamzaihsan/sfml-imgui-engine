@@ -1,0 +1,46 @@
+{
+	"sources" : 
+	[
+		{
+			"file" : "D:/Projects/sfml-imgui-engine/build/_deps/sfml-subbuild/CMakeFiles/sfml-populate"
+		},
+		{
+			"file" : "D:/Projects/sfml-imgui-engine/build/_deps/sfml-subbuild/CMakeFiles/44181c2c9d094a4849bd8a3bd0709232/sfml-populate.rule"
+		},
+		{
+			"file" : "D:/Projects/sfml-imgui-engine/build/_deps/sfml-subbuild/CMakeFiles/5869bdca1a31bad6475d8352c437e456/sfml-populate-complete.rule"
+		},
+		{
+			"file" : "D:/Projects/sfml-imgui-engine/build/_deps/sfml-subbuild/CMakeFiles/01c233f5f17f5205946accfa344112da/sfml-populate-build.rule"
+		},
+		{
+			"file" : "D:/Projects/sfml-imgui-engine/build/_deps/sfml-subbuild/CMakeFiles/01c233f5f17f5205946accfa344112da/sfml-populate-configure.rule"
+		},
+		{
+			"file" : "D:/Projects/sfml-imgui-engine/build/_deps/sfml-subbuild/CMakeFiles/01c233f5f17f5205946accfa344112da/sfml-populate-download.rule"
+		},
+		{
+			"file" : "D:/Projects/sfml-imgui-engine/build/_deps/sfml-subbuild/CMakeFiles/01c233f5f17f5205946accfa344112da/sfml-populate-install.rule"
+		},
+		{
+			"file" : "D:/Projects/sfml-imgui-engine/build/_deps/sfml-subbuild/CMakeFiles/01c233f5f17f5205946accfa344112da/sfml-populate-mkdir.rule"
+		},
+		{
+			"file" : "D:/Projects/sfml-imgui-engine/build/_deps/sfml-subbuild/CMakeFiles/01c233f5f17f5205946accfa344112da/sfml-populate-patch.rule"
+		},
+		{
+			"file" : "D:/Projects/sfml-imgui-engine/build/_deps/sfml-subbuild/CMakeFiles/01c233f5f17f5205946accfa344112da/sfml-populate-test.rule"
+		},
+		{
+			"file" : "D:/Projects/sfml-imgui-engine/build/_deps/sfml-subbuild/CMakeFiles/01c233f5f17f5205946accfa344112da/sfml-populate-update.rule"
+		}
+	],
+	"target" : 
+	{
+		"labels" : 
+		[
+			"sfml-populate"
+		],
+		"name" : "sfml-populate"
+	}
+}

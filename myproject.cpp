@@ -102,6 +102,37 @@ PlayerCl readPlayerJson(const std::string &filename)
     player.setFillColor(sf::Color(j["color"]));
     return player;
 }
+
+void dragObject(std::vector<Object>& objects, int selectedId, const sf::RenderWindow& window) {
+    static bool isDragging = false;
+    static sf::Vector2f offset;
+
+    sf::Vector2i mousePosition = sf::Mouse::getPosition(window);
+
+    for (auto &obj : objects)
+    {
+        if (obj.id == selectedId)
+        {
+            if (sf::Mouse::isButtonPressed(sf::Mouse::Right))
+            {
+                if (!isDragging)
+                {
+                    // Calculate the offset at the start of dragging
+                    offset = obj.getPosition() - window.mapPixelToCoords(mousePosition);
+                    isDragging = true;
+                }
+                // Update the position of the object
+                obj.setPosition(window.mapPixelToCoords(mousePosition) + offset);
+            }
+            else
+            {
+                isDragging = false;
+            }
+            break;
+        }
+    }
+}
+
 int main()
 {
 
@@ -189,6 +220,17 @@ int main()
                 window.close();
             }
         }
+
+        for (auto &objects : game.everything_map)
+        {
+            if (objects.getGlobalBounds().contains(window.mapPixelToCoords(sf::Mouse::getPosition(window))) && event.type == sf::Event::MouseButtonPressed)
+            {
+                Selected_Object_id = objects.id;
+            }
+        }
+
+        dragObject(game.everything_map, Selected_Object_id, window);
+
         if (Selected_Object_id == -1)
         {
             Player.update();
