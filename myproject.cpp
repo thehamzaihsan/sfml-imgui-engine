@@ -134,6 +134,7 @@ int main()
     if (readDataFromFile("everything.json").size() != 0)
     {
         game.everything_map = readDataFromFile("everything.json");
+        cout << game.everything_map.size() << endl;
     }
 
     ImGui::SFML::Init(window);
