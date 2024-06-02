@@ -14,9 +14,35 @@ class Game
 public:
     vector<Object> everything_map;
     bool isTileMap = true;
-    void DragnDrop(){
-        everything_map[0].setFillColor(sf::Color::Yellow);
-        cout << "DragnDrop\n";
+    void dragObject(std::vector<Object> &objects, int selectedId, const sf::RenderWindow &window)
+    {
+        static bool isDragging = false;
+        static sf::Vector2f offset;
+
+        sf::Vector2i mousePosition = sf::Mouse::getPosition(window);
+
+        for (auto &obj : objects)
+        {
+            if (obj.id == selectedId)
+            {
+                if (sf::Mouse::isButtonPressed(sf::Mouse::Right))
+                {
+                    if (!isDragging)
+                    {
+                        // Calculate the offset at the start of dragging
+                        offset = obj.getPosition() - window.mapPixelToCoords(mousePosition);
+                        isDragging = true;
+                    }
+                    // Update the position of the object
+                    obj.setPosition(window.mapPixelToCoords(mousePosition) + offset);
+                }
+                else
+                {
+                    isDragging = false;
+                }
+                break;
+            }
+        }
     }
     void Update();
     void Start();

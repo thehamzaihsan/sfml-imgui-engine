@@ -175,7 +175,16 @@ int main()
         {
             Player.update();
         }
-        game.DragnDrop();
+
+        for (auto &objects : game.everything_map)
+        {
+            if (objects.getGlobalBounds().contains(window.mapPixelToCoords(sf::Mouse::getPosition(window))) && event.type == sf::Event::MouseButtonPressed)
+            {
+                Selected_Object_id = objects.id;
+            }
+        }
+
+        game.dragObject(game.everything_map, Selected_Object_id, window);
 
         for (auto &objects : game.everything_map)
         {
@@ -236,7 +245,7 @@ int main()
                     TreePop(); // Only call TreePop if TreeNode returned true
                 }
             }
-            if(Selected_Object_id == objects.id)
+            if (Selected_Object_id == objects.id)
             {
                 if (TreeNode("Object Size")) // Check if TreeNode returns true
                 {
