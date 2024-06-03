@@ -11,8 +11,6 @@ using namespace std;
 
 
 
-
-
 std::vector<Object> readDataFromFile(const std::string &filename)
 {
     std::vector<Object> objects;
@@ -29,6 +27,15 @@ std::vector<Object> readDataFromFile(const std::string &filename)
             continue;
         }
 
+        if (!objJson.contains("id") || !objJson.contains("x") || !objJson.contains("y") ||
+            !objJson.contains("width") || !objJson.contains("height") || !objJson.contains("color") ||
+            !objJson.contains("isEnemy") || !objJson.contains("isWall") || !objJson.contains("isItem") ||
+            !objJson.contains("texturePath")) // Changed "texture" to "texturePath"
+        {
+            std::cerr << "Invalid JSON object: one or more required keys are missing" << std::endl;
+            continue;
+        }
+
         Object obj;
         obj.id = objJson["id"];
         obj.setPosition(objJson["x"], objJson["y"]);
@@ -38,6 +45,15 @@ std::vector<Object> readDataFromFile(const std::string &filename)
         obj.isEnemy = objJson["isEnemy"];
         obj.isWall = objJson["isWall"];
         obj.isItem = objJson["isItem"];
+
+        // Load texture from JSON
+        std::string texturePath = objJson["texturePath"]; // Changed "texture" to "texturePath"
+        if (!texturePath.empty())
+        {
+           obj.setTextureSF(texturePath);
+
+        }
+
         objects.push_back(obj);
     }
 
@@ -79,8 +95,10 @@ int main()
             {
                 window.close();
             }
-            Player.Update();
         }
+
+        // Update the player
+        Player.Update();
 
         // Clear the window
         window.clear();

@@ -1,6 +1,7 @@
 #ifndef OBJECT_H
 #define OBJECT_H
 #include <iostream>
+#include <cmath>
 #include <SFML/Graphics.hpp>
 #include <SFML/Graphics/RenderWindow.hpp>
 #include <SFML/System/Clock.hpp>
@@ -16,10 +17,36 @@ public:
     bool isEnemy = false;
     bool isWall = false;
     bool isItem = false;
+    sf::Texture texture;
+    string texturePath;
+    void setTextureSF(std::string path)
+    {
+        texturePath = path;
+        cout << "Loading texture from path: " << path << endl;
+        try
+        {
+            texture.loadFromFile(path);
+            if (!texture.loadFromFile(path))
+            {
+                throw std::runtime_error("Failed to load texture from file: " + path);
+            }
+            this->setTexture(&texture);
+            
+
+        }
+        catch (const std::exception &e)
+        {
+            std::cerr << "Error: " << e.what() << std::endl;
+        }
+    }
+    
     int id;
     Object()
     {
         setFillColor(sf::Color::Green);
+    }
+    string getPath() const {
+        return texturePath;
     }
     void update()
     {
@@ -43,6 +70,7 @@ public:
     void render(sf::RenderWindow &window)
     {
         window.draw(*this);
+        cout << "hekllo" << this->texturePath << endl;
     }
     friend std::istream &operator>>(std::istream &input, Object &obj)
     {
@@ -51,6 +79,10 @@ public:
         // input >> obj.x >> obj.y;
 
         return input;
+    }
+     void setPositionRounded(sf::Vector2f pos)
+    {
+        setPosition(round(pos.x / 64) * 64, round(pos.y / 64) * 64);
     }
 };
 
@@ -87,6 +119,10 @@ public:
     }
     void Update();
     void Start();
+
+    //make a function that wraps setPosition but it makes so that every object has a position rounded of to nearest multiple of 64
+   
+
 };
 
 #endif // OBJECT_H

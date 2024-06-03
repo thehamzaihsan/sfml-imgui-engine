@@ -8,10 +8,12 @@
 #include "object.h"
 #include <vector>
 #include <fstream>
-#include "json.hpp"
+#include "json.hpp"`
 #include "./scripts/playerScript.h"
 #include "Game.h"
 #include "./scripts/manageScript.h"
+#include <stack>
+#include "tinyfiledialogs.h"
 
 using namespace std;
 using namespace sf;
@@ -24,10 +26,10 @@ long long int randomValue()
 {
     static std::random_device rd;
     static std::mt19937 gen(rd());
-    std::uniform_int_distribution<long long int> dis(0, 9999999999999999);
+    std::uniform_int_distribution<long long int> dis(1, std::numeric_limits<int>::max());
     return dis(gen);
 }
-
+std::map<std::string, sf::Texture> textures;
 // Function to write object data to a file in JSON format
 void writeDataToFile(const std::vector<Object> &objects, const std::string &filename)
 {
@@ -45,13 +47,19 @@ void writeDataToFile(const std::vector<Object> &objects, const std::string &file
         objJson["isEnemy"] = obj.isEnemy;
         objJson["isItem"] = obj.isItem;
 
+        // Save the texture path
+        if (obj.getTexture())
+        {
+            cout << "hello";
+            objJson["texturePath"] = obj.getPath();
+        }
+
         j.push_back(objJson);
     }
     std::ofstream file(filename);
     file << j;
 }
 
-// Function to read object data from a file in JSON format
 std::vector<Object> readDataFromFile(const std::string &filename)
 {
     std::vector<Object> objects;
@@ -61,12 +69,6 @@ std::vector<Object> readDataFromFile(const std::string &filename)
 
     for (const auto &objJson : j)
     {
-        if (!objJson.is_object())
-        {
-            std::cerr << "Invalid JSON: expected an object, got " << objJson << std::endl;
-            continue;
-        }
-
         Object obj;
         obj.id = objJson["id"];
         obj.setPosition(objJson["x"], objJson["y"]);
@@ -76,13 +78,33 @@ std::vector<Object> readDataFromFile(const std::string &filename)
         obj.isEnemy = objJson["isEnemy"];
         obj.isWall = objJson["isWall"];
         obj.isItem = objJson["isItem"];
+
+        if (objJson.contains("texturePath"))
+        {
+            std::string texturePath = objJson["texturePath"];
+            if (textures.find(texturePath) == textures.end())
+            {
+                // Texture not loaded yet, try to load it
+                sf::Texture texture;
+                if (texture.loadFromFile(texturePath))
+                {
+                    textures[texturePath] = texture;
+                }
+                else
+                {
+                    std::cerr << "Failed to load texture from " << texturePath << std::endl;
+                }
+            }
+
+            // Set the texture to the Object
+            obj.setTexture(&textures[texturePath]);
+        }
+
         objects.push_back(obj);
     }
 
     return objects;
 }
-
-// Function to save player data to a file in JSON format
 void SavePlayerData(const PlayerCl &player, const std::string &filename)
 {
     nlohmann::json j;
@@ -108,6 +130,7 @@ PlayerCl readPlayerJson(const std::string &filename)
     player.setFillColor(sf::Color(j["color"]));
     return player;
 }
+
 int main()
 {
     // Start
@@ -121,14 +144,15 @@ int main()
     Player.setPosition(100, 100);
     Player.setOutlineColor(Color::White);
     Player.setOutlineThickness(0);
+    vector<Object> Prefab_array;
+    Object *draggedPrefab = nullptr;
+    bool undoTriggered = false;
+    bool redoTriggered = false;
     bool unsaved = true;
-    ImGuiWindowFlags allwins = ImGuiWindowFlags_NoMove | ImGuiWindowFlags_NoResize;
-    ImGuiWindowFlags controlWins = ImGuiWindowFlags_NoMove | ImGuiWindowFlags_NoResize;
+    bool selected = false;
 
-    if (unsaved)
-    {
-        controlWins = ImGuiWindowFlags_NoMove | ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoCollapse | ImGuiWindowFlags_UnsavedDocument;
-    }
+    stack<vector<Object>> undoStack;
+    stack<vector<Object>> redoStack;
 
     std::ifstream file("everything.json");
     if (file.peek() == std::ifstream::traits_type::eof())
@@ -141,6 +165,7 @@ int main()
         // The file is not empty, parse it
         game.everything_map = readDataFromFile("everything.json");
     }
+    cout << game.everything_map[0].getPath();
 
     ImGui::SFML::Init(window);
     std::cout << "ImGui-SFML initialized\n";
@@ -188,10 +213,14 @@ int main()
             if (objects.getGlobalBounds().contains(window.mapPixelToCoords(sf::Mouse::getPosition(window))) && event.type == sf::Event::MouseButtonPressed)
             {
                 Selected_Object_id = objects.id;
+                selected = true;
             }
         }
 
-        game.dragObject(game.everything_map, Selected_Object_id, window);
+        if (selected)
+        {
+            game.dragObject(game.everything_map, Selected_Object_id, window);
+        }
 
         for (auto &objects : game.everything_map)
         {
@@ -207,13 +236,91 @@ int main()
             }
         }
 
+        // if delete key is pressed
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Delete))
+        {
+            if (Selected_Object_id != -1)
+            {
+                for (int i = 0; i < game.everything_map.size(); i++)
+                {
+                    if (game.everything_map[i].id == Selected_Object_id)
+                    {
+                        undoStack.push(game.everything_map);
+                        game.everything_map.erase(game.everything_map.begin() + i);
+                        break;
+                    }
+                }
+                Selected_Object_id = -1;
+            }
+        }
+
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Z) && sf::Keyboard::isKeyPressed(sf::Keyboard::LControl))
+        {
+            if (!undoTriggered && !undoStack.empty())
+            {
+                redoStack.push(game.everything_map);
+                game.everything_map = undoStack.top();
+                undoStack.pop();
+                undoTriggered = true;
+            }
+        }
+        else
+        {
+            undoTriggered = false;
+        }
+
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Y) && sf::Keyboard::isKeyPressed(sf::Keyboard::LControl))
+        {
+            if (!redoTriggered && !redoStack.empty())
+            {
+                undoStack.push(game.everything_map);
+                game.everything_map = redoStack.top();
+                redoStack.pop();
+
+                redoTriggered = true;
+            }
+        }
+        else
+        {
+            redoTriggered = false;
+        }
+
         // IMGUI
         SFML::Update(window, deltaClock.restart());
         SetNextWindowPos(ImVec2(1500, 34), ImGuiCond_FirstUseEver);
         PushFont(font);
         ShowDemoWindow();
+
+        if (Prefab_array.size() > 0)
+        {
+
+            Begin("Prefabs");
+            // display each prefab with their texture/color in an image besides them and the ability to rename them
+            for (auto &objects : Prefab_array)
+            {
+                sf::Color sfColor = objects.getFillColor();
+                ImVec4 imColor = ImVec4(sfColor.r / 255.f, sfColor.g / 255.f, sfColor.b / 255.f, sfColor.a / 255.f);
+
+                if (ImGui::ColorButton("##color", imColor, ImGuiColorEditFlags_NoTooltip))
+                {
+                    undoStack.push(game.everything_map);
+                    redoStack = stack<vector<Object>>();
+                    Object obj;
+                    obj.id = randomValue();
+                    Selected_Object_id = obj.id;
+                    obj.setPosition(0, 0);
+                    obj.setSize(sf::Vector2f(64, 64));
+                    obj.setFillColor(objects.getFillColor());
+                    game.everything_map.push_back({obj});
+                }
+                ImGui::SameLine();
+                ImGui::Text("Prefab");
+            }
+            End();
+        }
+
         bool t = true;
-        Begin("Properties", &t, allwins);
+        Begin("Properties");
         if (TreeNode("Object Color")) // Replace BeginTabItem with TreeNode
         {
             for (auto &objects : game.everything_map)
@@ -224,8 +331,9 @@ int main()
                     ImVec4 color = ImVec4(objects.getFillColor().r / 255.0f, objects.getFillColor().g / 255.0f, objects.getFillColor().b / 255.0f, objects.getFillColor().a / 255.0f);
                     if (ColorPicker4("Object Color", &color.x, ImGuiColorEditFlags_NoInputs | ImGuiColorEditFlags_NoLabel))
                     {
+                        undoStack.push(game.everything_map);
+                        redoStack = stack<vector<Object>>();
                         objects.setFillColor(sf::Color(color.x * 255, color.y * 255, color.z * 255, color.w * 255));
-                        unsaved = true;
                     }
                 }
             }
@@ -243,11 +351,13 @@ int main()
             {
                 if (TreeNode("Object Position")) // Check if TreeNode returns true
                 {
+                    undoStack.push(game.everything_map);
+                    redoStack = stack<vector<Object>>();
                     float posX = objects.getPosition().x;
                     float posY = objects.getPosition().y;
                     ImGui::InputFloat("X", &posX, 0.1f);
                     ImGui::InputFloat("Y", &posY, 0.1f);
-                    objects.setPosition(posX, posY);
+                    objects.setPositionRounded(sf::Vector2f(posX, posY));
 
                     TreePop(); // Only call TreePop if TreeNode returned true
                 }
@@ -256,6 +366,8 @@ int main()
             {
                 if (TreeNode("Object Size")) // Check if TreeNode returns true
                 {
+                    undoStack.push(game.everything_map);
+                    redoStack = stack<vector<Object>>();
                     float width = objects.getSize().x;
                     float height = objects.getSize().y;
                     ImGui::InputFloat("Width", &width, 0.001f);
@@ -265,19 +377,40 @@ int main()
                     TreePop(); // Only call TreePop if TreeNode returned true
                 }
             }
+            // make tree node object texture and map that texture to the object
+            if (Selected_Object_id == objects.id)
+            {
+
+                static char texturePath[128] = "";
+
+                if (ImGui::InputText("Texture Path", texturePath, IM_ARRAYSIZE(texturePath)))
+                {
+                    undoStack.push(game.everything_map);
+                    redoStack = stack<vector<Object>>();
+                    objects.setTextureSF(texturePath);
+                }
+            }
         }
 
         End();
 
-        Begin("Everything Map", &t, allwins);
+        Begin("Everything Map");
         BeginGroup();
 
         if (ImGui::Button("Delete"))
         {
             if (Selected_Object_id != -1)
             {
-                cout << ("Deleted Object with id: " + std::to_string(Selected_Object_id)) << endl;
-                game.everything_map.erase(game.everything_map.begin() + Selected_Object_id);
+                for (int i = 0; i < game.everything_map.size(); i++)
+                {
+                    if (game.everything_map[i].id == Selected_Object_id)
+                    {
+                        undoStack.push(game.everything_map);
+                        redoStack = stack<vector<Object>>();
+                        game.everything_map.erase(game.everything_map.begin() + i);
+                        break;
+                    }
+                }
             }
         }
 
@@ -285,12 +418,29 @@ int main()
 
         if (Button("Add Shape/Blocks"))
         {
+            undoStack.push(game.everything_map);
+            redoStack = stack<vector<Object>>();
             Object obj;
             obj.id = randomValue();
             Selected_Object_id = obj.id;
-            obj.setPosition(100, 100);
-            obj.setSize(sf::Vector2f(100, 100));
+            obj.setPosition(0, 0);
+            obj.setSize(sf::Vector2f(64, 64));
+
             game.everything_map.push_back({obj});
+        }
+        SameLine();
+        if (Button("Make Prefab"))
+        {
+            undoStack.push(game.everything_map);
+            redoStack = stack<vector<Object>>();
+
+            for (auto &objects : game.everything_map)
+            {
+                if (objects.id == Selected_Object_id)
+                {
+                    Prefab_array.push_back(objects);
+                }
+            }
         }
 
         EndGroup();
@@ -314,7 +464,7 @@ int main()
         End();
 
         SetNextWindowPos(ImVec2(1500, 10), ImGuiCond_FirstUseEver);
-        Begin("Controls", &t, controlWins);
+        Begin("Controls");
         BeginGroup();
         {
             if (Button("Save & Play"))
